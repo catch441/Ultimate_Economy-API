@@ -2,9 +2,9 @@ name: Install into repository
 
 on: 
   push:
-    branches: [ dev,master ]
+    branches: [ dev ]
   pull_request:
-    branches: [ dev,master ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -26,12 +26,8 @@ jobs:
         if [ ${{github.ref}} == refs/heads/dev ]
         then
         mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ ${{github.ref}} == refs/heads/master ] || [ ${{ github.event.pull_request.base.ref }} == master ]
-        then
+        elif [ ${{ github.event.pull_request.base.ref }} == master ]
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ ${{ github.event.pull_request.base.ref }} == dev ]
-        then
-        mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
     - name: deploy
       run: |
