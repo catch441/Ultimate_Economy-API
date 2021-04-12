@@ -5,7 +5,7 @@ import java.util.List;
 public interface ConfigDao {
 	
 	/**
-	 * Retrns tru, if the value exists.
+	 * Returns true, if the value exists.
 	 * @return boolean
 	 */
 	public boolean hasAllowQuickshop();

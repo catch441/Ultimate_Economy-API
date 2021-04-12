@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
-import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.shopsystem.logic.ShopSystemException;
 import org.ue.townsystem.logic.TownSystemException;
@@ -99,11 +99,11 @@ public interface ShopValidationHandler {
 	/**
 	 * Check for item does not exist.
 	 * 
-	 * @param itemString
+	 * @param itemHash
 	 * @param itemList
 	 * @throws ShopSystemException
 	 */
-	public void checkForItemDoesNotExist(String itemString, List<ShopItem> itemList) throws ShopSystemException;
+	public void checkForItemDoesNotExist(int itemHash, List<ShopItem> itemList) throws ShopSystemException;
 	
 	/**
 	 * Check for item can be deleted.

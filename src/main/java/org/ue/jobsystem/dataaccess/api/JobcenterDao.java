@@ -1,4 +1,4 @@
-package org.ue.jobsyste.dataaccess.api;
+package org.ue.jobsystem.dataaccess.api;
 
 import java.util.List;
 

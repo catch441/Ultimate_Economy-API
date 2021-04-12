@@ -8,14 +8,38 @@ import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.shopsystem.dataaccess.api.ShopDao;
 import org.ue.shopsystem.logic.ShopSystemException;
 import org.ue.townsystem.logic.TownSystemException;
 
 public abstract interface AbstractShop {
+
+	/**
+	 * Setup a new shop. Only Adminshop.
+	 * 
+	 * @param name
+	 * @param shopId
+	 * @param spawnLocation
+	 * @param size
+	 */
+	public void setupNew(String name, String shopId, Location spawnLocation, int size);
+
+	/**
+	 * Setup an existing shop. If name != null then use old loading otherwise use
+	 * new loading. If you choose old loading, the savefile gets converted to the
+	 * new save system.
+	 * 
+	 * @param name
+	 * @param shopId
+	 * @throws TownSystemException
+	 * @throws ShopSystemException
+	 * @throws GeneralEconomyException
+	 */
+	public void setupExisting(String name, String shopId)
+			throws TownSystemException, ShopSystemException, GeneralEconomyException;
 
 	/**
 	 * Returns the name of this shop.
@@ -69,7 +93,7 @@ public abstract interface AbstractShop {
 	 * @throws GeneralEconomyException
 	 */
 	public ShopItem getShopItem(int slot) throws GeneralEconomyException, ShopSystemException;
-	
+
 	/**
 	 * Returns a shop item.
 	 * 
