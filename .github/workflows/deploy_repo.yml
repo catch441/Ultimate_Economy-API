@@ -23,6 +23,7 @@ jobs:
         git add --all
         git stash
         git status
+        git branch -a
         git checkout repository
         git stash pop
         git commit -m 'Update API version'
