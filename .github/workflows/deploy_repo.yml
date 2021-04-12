@@ -21,7 +21,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: install jar
-      run: mvn install:install-file -Dversion=${{ github.event.inputs.version } -DgroupId=org.ue -DartifactId=Ultimate_Economy-API -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=./repository  -DcreateChecksum=true
+      run: mvn install:install-file -Dversion=${{ github.event.inputs.version }} -DgroupId=org.ue -DartifactId=Ultimate_Economy-API -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=./repository  -DcreateChecksum=true
         # Deploy to local repo
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
