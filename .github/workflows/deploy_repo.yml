@@ -18,23 +18,18 @@ jobs:
     - name: install jar
       run: |
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
-        git add --all
       # Deploy to local repo
-    - name: Commit files
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add --all
-        git commit -m "Add changes" -a
-    - uses: actions/checkout@v2
+    - name: deploy
+      uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
       with:
-        github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        ref: repository
-    - name: ddd files
-      run: |
-        git status
-   # - name: Push changes
-    #  uses: ad-m/github-push-action@master
-   #  with:
-     #   github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-    #    branch: repository
+        # The arguments for the `git add` command (see the paragraph below for more info)
+        # Default: '.'
+        add: --all
+
+        # Name of the branch to use, if different from the one that triggered the workflow
+        # Default: the branch that triggered the run
+        branch: repository
+
+        # The flag used on the pull strategy. Use NO-PULL to avoid the action pulling at all.
+        # Default: '--no-rebase'
+        pull_strategy: --no-rebase
