@@ -5,7 +5,7 @@
 	<groupId>Ultimate_Economy</groupId>
 	<artifactId>Ultimate_Economy-API</artifactId>
 	<version>1.2.7</version>
-	<name>Ultimate_Economy</name>
+	<name>Ultimate_Economy-API</name>
 	<repositories>
 		<repository>
 			<id>spigot-repo</id>
