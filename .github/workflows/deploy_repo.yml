@@ -41,7 +41,10 @@ jobs:
         git stash
         git checkout repository
         git stash pop
-        git add --all
+        # resolve conflicts
+        git stash drop
+        git push
+        
 
 
         
