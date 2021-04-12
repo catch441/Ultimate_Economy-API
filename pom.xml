@@ -30,7 +30,7 @@
 	</dependencies>
 	<build>
 		<defaultGoal>clean package</defaultGoal>
-		<finalName>Ultimate_Economy-API-${project.version}</finalName>
+		<finalName>Ultimate_Economy-API</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
