@@ -19,9 +19,9 @@ jobs:
       run: mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=./repository  -DcreateChecksum=true
         # Deploy to local repo
     - name: Deploy
-      uses: s0/git-publish-subdir-action@develop
-      env:
-        REPO: self
-        BRANCH: repository
-        FOLDER: repository
-        GITHUB_TOKEN: ${{secrets.ACTIONS_DEPLOY_KEY}}
+      run: |
+        git add --all
+        git stash
+        git checkout repository
+        git stash pop
+        git commit -m 'Update API version'
