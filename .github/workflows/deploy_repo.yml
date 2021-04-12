@@ -41,7 +41,7 @@ jobs:
         echo '1111111'
         git stash
         echo '2222222'
-        git checkout repository --ours
+        git checkout repository
         echo '3333333'
         git cherry-pick -n -m1 -Xtheirs stash
         echo '333333444444'
