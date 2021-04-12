@@ -3,8 +3,8 @@ package org.ue.townsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Chunk;
-import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.townsystem.logic.TownSystemException;
 

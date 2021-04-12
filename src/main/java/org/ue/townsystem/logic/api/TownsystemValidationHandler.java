@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
-import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.townsystem.logic.TownSystemException;
 
 public interface TownsystemValidationHandler {
