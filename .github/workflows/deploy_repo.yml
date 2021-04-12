@@ -27,8 +27,15 @@ jobs:
         git add --all
         git commit -m "Add changes" -a
         git checkout dev
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+    - uses: actions/checkout@v2
       with:
         github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        branch: repository
+        ref: repository
+    - name: ddd files
+      run: |
+        git status
+   # - name: Push changes
+    #  uses: ad-m/github-push-action@master
+   #  with:
+     #   github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    #    branch: repository
