@@ -43,7 +43,7 @@ jobs:
         echo '2222222'
         git checkout repository --ours
         echo '3333333'
-        git stash pop
+        git cherry-pick -n -m1 -Xtheirs stash
         echo '333333444444'
         git commit -m 'Update API version'
         echo '4444444'
