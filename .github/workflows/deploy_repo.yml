@@ -18,6 +18,8 @@ jobs:
     - name: install jar
       run: |
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
         git add --all
         git commit -m 'test'
       # Deploy to local repo
