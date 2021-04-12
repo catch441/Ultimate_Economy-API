@@ -1,12 +1,6 @@
 name: Install into repository
 
 on: 
-  workflow_dispatch:
-    inputs:
-      environment: 
-        decsription: 'prod or dev'
-        required: true
-        default: 'dev'
   push:
     branches: [ dev,master ]
   pull_request:
@@ -29,10 +23,10 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: install jar
       run: | 
-        if [ -z ${{github.event.inputs.environment}} && ${{github.ref}} == refs/heads/dev ] || [ ${{github.event.inputs.environment}} == dev ]
+        if [ ${{github.ref}} == refs/heads/dev ]
         then
         mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ -z ${{github.event.inputs.environment}} && ${{github.ref}} == refs/heads/master ] || [ ${{github.event.inputs.environment}} == prod ]
+        elif [ ${{github.ref}} == refs/heads/master ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
