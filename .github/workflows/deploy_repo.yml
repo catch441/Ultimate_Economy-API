@@ -29,15 +29,15 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: install jar
       run: |
-        if [ ${{github.event.inputs.environment}} == dev || ( [ -z ${{github.event.inputs.environment}} ] && ${{github.ref}} == dev) ]
+        if [ ( [ -z ${{github.event.inputs.environment}} ] && ${{github.ref}} == refs/heads/dev) || ${{github.event.inputs.environment}} == dev ]
         then
         mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ ${{github.event.inputs.environment}} == prod || ( [ -z ${{github.event.inputs.environment}} ] && ${{github.ref}} == master) ]
+        elif [ ( [ -z ${{github.event.inputs.environment}} ] && ${{github.ref}} == refs/heads/master) || ${{github.event.inputs.environment}} == prod ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
     - name: deploy
-      run: |  
+      run: |
         git config --global user.email "github-actions@users.noreply.github.com"
         git config --global user.name "github-actions"
         git add --all
