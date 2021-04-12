@@ -41,9 +41,9 @@ jobs:
         echo '1111111'
         git stash
         echo '2222222'
-        git checkout repository
+        git checkout repository --ours
         echo '3333333'
-        git stash pop --ours
+        git stash pop
         echo '333333444444'
         git commit -m 'Update API version'
         echo '4444444'
