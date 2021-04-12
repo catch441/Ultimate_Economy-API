@@ -11,6 +11,12 @@ public interface MessageWrapper {
 	public void loadLanguage(Locale locale);
 	
 	/**
+	 * Returns the actual locale.
+	 * @return locale
+	 */
+	public Locale getLocale();
+	
+	/**
 	 * Returns a error message with the chatcolor red.
 	 * 
 	 * @param key
