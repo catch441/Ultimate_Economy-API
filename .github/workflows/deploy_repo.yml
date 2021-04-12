@@ -26,6 +26,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add --all
         git commit -m "Add changes" -a
+        git checkout dev
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
