@@ -26,7 +26,6 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add --all
         git commit -m "Add changes" -a
-        git checkout dev
     - uses: actions/checkout@v2
       with:
         github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
