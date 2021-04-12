@@ -25,10 +25,16 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: install dev jar
       if: (${{env.environment == 'dev'}})
-      run: mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
-    - name: install prod jar
-      if: (${{env.environment == 'prod'}})
-      run: mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
+      run: |
+        if [${{environment}} == 'dev'];
+        then
+        echo '++++++++++++++++++++++++++++++'
+        mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
+        
+        if [${{environment}} == 'dev'];
+        then
+        echo '******************************'
+        mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
     - name: deploy
       run: |
         git add --all
