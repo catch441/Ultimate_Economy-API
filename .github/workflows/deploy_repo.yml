@@ -23,8 +23,7 @@ jobs:
         java-version: 14
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: install dev jar
-      if: (${{env.environment == 'dev'}})
+    - name: install jar
       run: |
         if [${{environment}} == 'dev']
         then
