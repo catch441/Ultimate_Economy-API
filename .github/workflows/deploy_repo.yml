@@ -1,6 +1,12 @@
 name: Install into repository
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      env: 
+        decsription: 'prod or dev'
+        required: true
+        default: 'dev'
 
 jobs:
   build:
@@ -17,10 +23,12 @@ jobs:
         java-version: 14
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: install jar
-      run: |
-        mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
-        git branch -a
+    - name: install dev jar
+      if: "${{env}} == dev"
+      run: mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
+    - name: install prod jar
+      if: "${{env}} == prod"
+      run: mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
     - name: deploy
       run: |
         git add --all
