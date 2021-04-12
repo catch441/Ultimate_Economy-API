@@ -38,12 +38,18 @@ jobs:
         git config --global user.name "github-actions"
 
         git add --all
+        echo '1111111'
         git stash
+        echo '2222222'
         git checkout repository
+        echo '3333333'
         git stash pop
+        echo '4444444'
         # resolve conflicts
-        git stash drop
+        #git stash drop
+        echo '5555555'
         git push
+        echo '6666666'
         
 
 
