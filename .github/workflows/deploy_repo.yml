@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Set up JDK 14
       uses: actions/setup-java@v1
       with:
@@ -18,22 +20,5 @@ jobs:
     - name: install jar
       run: |
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
-        git add --all
-        git commit -m 'test'
-      # Deploy to local repo
-    - name: deploy
-      uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
-      with:
-        # The arguments for the `git add` command (see the paragraph below for more info)
-        # Default: '.'
-        add: --all
+        git branch -a
 
-        # Name of the branch to use, if different from the one that triggered the workflow
-        # Default: the branch that triggered the run
-        branch: repository
-
-        # The flag used on the pull strategy. Use NO-PULL to avoid the action pulling at all.
-        # Default: '--no-rebase'
-        pull_strategy: --no-rebase
