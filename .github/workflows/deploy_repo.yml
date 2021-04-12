@@ -41,7 +41,7 @@ jobs:
         git stash
         git checkout repository
         git stash pop
-        git commit -m 'Deploy new API version'
+
 
         
 
