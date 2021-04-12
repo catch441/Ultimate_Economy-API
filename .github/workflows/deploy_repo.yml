@@ -16,12 +16,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: install jar
-      run: mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=./repository  -DcreateChecksum=true
+      run: mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
         # Deploy to local repo
     - name: Deploy
       run: |
         git add --all
         git stash
+        git status
         git checkout repository
         git stash pop
         git commit -m 'Update API version'
