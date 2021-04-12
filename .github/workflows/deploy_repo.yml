@@ -23,10 +23,10 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: install jar
       run: | 
-        if [ ${{github.ref}} == refs/heads/dev  && ${{GITHUB_EVENT_NAME}} == push ] || [ ${{ github.event.pull_request.base.ref }} == refs/heads/dev  && ${{GITHUB_EVENT_NAME}} == pull_request ]
+        if [ ${{github.ref}} == refs/heads/dev  && ${{GITHUB_EVENT_NAME}} == push ] || [ ${{ github.event.pull_request.base.ref }} == refs/heads/dev  && ${{${{github.event.action}}}} == pull_request ]
         then
         mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ ${{github.ref}} == refs/heads/master  && ${{GITHUB_EVENT_NAME}} == push ]  || [ ${{ github.event.pull_request.base.ref }} == refs/heads/master  && ${{GITHUB_EVENT_NAME}} == pull_request ]
+        elif [ ${{github.ref}} == refs/heads/master  && ${{GITHUB_EVENT_NAME}} == push ]  || [ ${{ github.event.pull_request.base.ref }} == refs/heads/master  && ${{${{github.event.action}}}} == pull_request ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
