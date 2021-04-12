@@ -27,8 +27,8 @@ jobs:
       run: |
         if [ ${{github.event.inputs.environment}} == dev ]
         then
-        mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [ ${{github.event.inputs.environment}} == dev ]
+        mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
+        elif [ ${{github.event.inputs.environment}} == prod ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
