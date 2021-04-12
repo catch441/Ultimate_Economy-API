@@ -25,10 +25,10 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: install jar
       run: |
-        if [${{github.event.inputs.environment}} == dev]
+        if [ ${{github.event.inputs.environment}} == dev ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
-        elif [${{github.event.inputs.environment}} == dev]
+        elif [ ${{github.event.inputs.environment}} == dev ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         fi
