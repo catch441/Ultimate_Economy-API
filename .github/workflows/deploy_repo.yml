@@ -25,7 +25,7 @@ jobs:
       run: | 
         if [ ${{github.ref}} == refs/heads/dev ]
         then
-        mvn install:install-file -Dversion=dev -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
+        mvn install:install-file -Dversion=dev -DartifactId=Ultimate_Economy-API -DgroupId=org.ue -DgeneratePom=true -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
         elif [ ${{ github.event.pull_request.base.ref }} == master ]
         then
         mvn install:install-file -DpomFile=pom.xml -Dfile=./target/Ultimate_Economy-API.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true;
