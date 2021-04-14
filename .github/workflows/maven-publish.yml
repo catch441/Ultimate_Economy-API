@@ -30,4 +30,4 @@ jobs:
       run: mvn deploy
       env:
         USERNAME: catch441
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
+        TOKEN: ${{ secrets.DEPLOY_KEY }}
