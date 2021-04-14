@@ -27,6 +27,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimare_Economy-API/
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: mvn deploy -Dgithub_token=${{ secrets.GITHUB_TOKEN }} -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimare_Economy-API/
