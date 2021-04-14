@@ -10,7 +10,7 @@
         <httpHeaders>
           <property>
             <name>Authorization</name>
-            <value>${GITHUB_TOKEN}</value>
+            <value>${gitub_token}</value>
           </property>
         </httpHeaders>
       </configuration>
