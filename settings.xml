@@ -13,7 +13,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub catch441 Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/catch441</url>
+                    <url>https://maven.pkg.github.com/catch441/Ultimate_Economy-API</url>
                 </repository>
             </repositories>
         </profile>
