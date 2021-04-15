@@ -27,4 +27,4 @@ jobs:
       run: mvn deploy -s ./settings.xml -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimate_Economy-API/
       env:
         USERNAME: ${{ secrets.USERNAME }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: ${{ secrets.DEPLOY_KEY }}
