@@ -14,7 +14,7 @@
 	</repositories>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>1.8</java.version>
 		<maven.compiler.version>3.8.1</maven.compiler.version>
 		<spigot.api.version>1.16.5-R0.1-SNAPSHOT</spigot.api.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
