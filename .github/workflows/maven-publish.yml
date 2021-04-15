@@ -10,9 +10,19 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 14
+      uses: actions/setup-java@v2
+      with:
+        java-version: '14'
+        distribution: 'adopt'
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+      
+  deploy:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 14
@@ -22,11 +32,8 @@ jobs:
         distribution: 'adopt'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Deploy to Github Package Registry
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s settings.xml -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimare_Economy-API/
       env:
-        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn --settings settings.xml --file pom.xml deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimare_Economy-API/
+        USERNAME: ${{ secrets.USERNAME }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
