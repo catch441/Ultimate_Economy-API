@@ -51,4 +51,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub catch441 Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/catch441/Ultimate_Economy-API</url>
+		</repository>
+	</distributionManagement>
 </project>
