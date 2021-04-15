@@ -12,13 +12,6 @@ public interface BankDao {
 	public void setupSavefile();
 
 	/**
-	 * Saves the list of ibans.
-	 * 
-	 * @param ibans
-	 */
-	public void saveIbanList(List<String> ibans);
-
-	/**
 	 * Loads the iban list.
 	 * 
 	 * @return list of ibans

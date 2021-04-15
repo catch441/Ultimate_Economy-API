@@ -17,7 +17,8 @@ public interface GeneralEconomyValidationHandler {
 	public void checkForValidSlot(int slot, int size) throws GeneralEconomyException;
 
 	/**
-	 * Check if the value is a multiple of 9 and not greater then 54 and not smaller then 9.
+	 * Check if the value is a multiple of 9 and not greater then 54 and not smaller
+	 * then 9.
 	 * 
 	 * @param size
 	 * @throws GeneralEconomyException
@@ -57,4 +58,14 @@ public interface GeneralEconomyValidationHandler {
 	 * @throws GeneralEconomyException
 	 */
 	public void checkForValueInList(List<String> list, String value) throws GeneralEconomyException;
+
+	/**
+	 * Check for value exists. Throws a {@link GeneralEconomyException} with the
+	 * name as exception parameter if the value is null.
+	 * 
+	 * @param value
+	 * @param name
+	 * @throws GeneralEconomyException
+	 */
+	public void checkForValueExists(Object value, String name) throws GeneralEconomyException;
 }
