@@ -6,7 +6,7 @@ name: Maven Package
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
 
 jobs:
   build:
@@ -18,8 +18,7 @@ jobs:
       with:
         java-version: '14'
         distribution: 'adopt'
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+   
       
   deploy:
     runs-on: ubuntu-latest
@@ -32,8 +31,11 @@ jobs:
         distribution: 'adopt'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s settings.xml -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimare_Economy-API/
+      if: github.ref == 'refs/heads/master'
+      run: mvn deploy -s settings.xml -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/catch441/Ultimate_Economy-API/
       env:
         USERNAME: ${{ secrets.USERNAME }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
