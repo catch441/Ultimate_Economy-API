@@ -3,6 +3,7 @@ package org.ue.shopsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.shopsystem.logic.ShopSystemException;
 
@@ -62,9 +63,10 @@ public interface AdminshopManager {
 	 * @param size
 	 * @throws ShopSystemException
 	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
 	public void createAdminShop(String name, Location spawnLocation, int size)
-			throws ShopSystemException, GeneralEconomyException;
+			throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
 	
 	/**
 	 * This method should be used to delete a adminshop.

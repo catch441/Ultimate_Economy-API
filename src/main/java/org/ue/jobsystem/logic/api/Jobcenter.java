@@ -3,12 +3,13 @@ package org.ue.jobsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
+import org.ue.common.logic.api.EconomyVillager;
 import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.jobsystem.logic.JobSystemException;
+import org.ue.townsystem.logic.TownSystemException;
 
-public interface Jobcenter {
+public interface Jobcenter extends EconomyVillager {
 
 	/**
 	 * Setup a new jobcenter.
@@ -16,15 +17,21 @@ public interface Jobcenter {
 	 * @param name
 	 * @param spawnLocation
 	 * @param size
+	 * @throws EconomyPlayerException
+	 * @throws GeneralEconomyException
 	 */
-	public void setupNew(String name, Location spawnLocation, int size);
+	public void setupNew(String name, Location spawnLocation, int size) throws GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * Setup an existing shop.
 	 * 
 	 * @param name
+	 * @throws TownSystemException     if the world of the spawnlocation does not
+	 *                                 exist
+	 * @throws EconomyPlayerException
+	 * @throws GeneralEconomyException
 	 */
-	public void setupExisting(String name);
+	public void setupExisting(String name) throws TownSystemException, GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * This method adds a job to this jobcenter.
@@ -48,13 +55,6 @@ public interface Jobcenter {
 	public void removeJob(Job job) throws JobSystemException;
 
 	/**
-	 * This method moves a jobcenter villager to a other location.
-	 * 
-	 * @param location
-	 */
-	public void moveJobcenter(Location location);
-
-	/**
 	 * This method returns the name of this jobcenter.
 	 * 
 	 * @return String
@@ -62,23 +62,11 @@ public interface Jobcenter {
 	public String getName();
 
 	/**
-	 * This method despawns the jobcenter villager.
-	 */
-	public void despawnVillager();
-
-	/**
 	 * This method returns a list of all jobs in this jobcenter.
 	 * 
 	 * @return List of jobs
 	 */
 	public List<Job> getJobList();
-
-	/**
-	 * This method opens the jobcenter inventory.
-	 * 
-	 * @param player
-	 */
-	public void openInv(Player player);
 
 	/**
 	 * This method returns true if this jobcenter contains this job.
@@ -92,11 +80,4 @@ public interface Jobcenter {
 	 * Deletes savefile and despawns villager.
 	 */
 	public void deleteJobcenter();
-
-	/**
-	 * Returns the location of the jobcenter villager.
-	 * 
-	 * @return location
-	 */
-	public Location getJobcenterLocation();
 }

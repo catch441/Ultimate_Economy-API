@@ -3,6 +3,7 @@ package org.ue.jobsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.jobsystem.logic.JobSystemException;
 
@@ -47,9 +48,10 @@ public interface JobcenterManager {
 	 * @param size
 	 * @throws JobSystemException
 	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
 	public void createJobcenter(String name, Location spawnLocation, int size)
-			throws JobSystemException, GeneralEconomyException;
+			throws JobSystemException, GeneralEconomyException, EconomyPlayerException;
 	
 	/**
 	 * This method loads all jobcenters from the save files. !!!

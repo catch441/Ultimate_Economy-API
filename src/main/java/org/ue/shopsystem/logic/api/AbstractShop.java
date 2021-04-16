@@ -2,44 +2,27 @@ package org.ue.shopsystem.logic.api;
 
 import java.util.List;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
-import org.bukkit.entity.Villager.Profession;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.common.logic.api.EconomyVillager;
 import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.dataaccess.api.ShopDao;
 import org.ue.shopsystem.logic.ShopSystemException;
 import org.ue.townsystem.logic.TownSystemException;
 
-public abstract interface AbstractShop {
+public abstract interface AbstractShop extends EconomyVillager {
 
 	/**
-	 * Setup a new shop. Only Adminshop.
+	 * Setup an existing shop.
 	 * 
-	 * @param name
 	 * @param shopId
-	 * @param spawnLocation
-	 * @param size
-	 */
-	public void setupNew(String name, String shopId, Location spawnLocation, int size);
-
-	/**
-	 * Setup an existing shop. If name != null then use old loading otherwise use
-	 * new loading. If you choose old loading, the savefile gets converted to the
-	 * new save system.
-	 * 
-	 * @param name
-	 * @param shopId
-	 * @throws TownSystemException
-	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 * @throws GeneralEconomyException
+	 * @throws TownSystemException
 	 */
-	public void setupExisting(String name, String shopId)
-			throws TownSystemException, ShopSystemException, GeneralEconomyException;
+	public void setupExisting(String shopId)
+			throws TownSystemException, GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * Returns the name of this shop.
@@ -56,27 +39,6 @@ public abstract interface AbstractShop {
 	public String getShopId();
 
 	/**
-	 * Returns the shop inventory.
-	 * 
-	 * @return shopInventory
-	 */
-	public Inventory getShopInventory();
-
-	/**
-	 * Returns the location of the shop.
-	 * 
-	 * @return location
-	 */
-	public Location getShopLocation();
-
-	/**
-	 * Returns the savefile handler of this shop.
-	 * 
-	 * @return ShopSavefileManager
-	 */
-	public ShopDao getShopDao();
-
-	/**
 	 * Returns the itemslist of this shop.
 	 * 
 	 * @return list of ShopItems
@@ -89,10 +51,11 @@ public abstract interface AbstractShop {
 	 * 
 	 * @param slot
 	 * @return itemstack
-	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 * @throws GeneralEconomyException
+	 * @throws ShopSystemException
 	 */
-	public ShopItem getShopItem(int slot) throws GeneralEconomyException, ShopSystemException;
+	public ShopItem getShopItem(int slot) throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
 
 	/**
 	 * Returns a shop item.
@@ -121,24 +84,25 @@ public abstract interface AbstractShop {
 	 * This method removes a item from this shop.
 	 * 
 	 * @param slot intern
-	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 * @throws GeneralEconomyException
+	 * @throws ShopSystemException
 	 */
-	public void removeShopItem(int slot) throws ShopSystemException, GeneralEconomyException;
+	public void removeShopItem(int slot) throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
 
 	/**
 	 * This method edits an existing item in this shop.
 	 * 
 	 * @param slot      intern
-	 * @param amount
-	 * @param sellPrice
-	 * @param buyPrice
+	 * @param amount    null, if not changed
+	 * @param sellPrice null, if not changed
+	 * @param buyPrice  null, if not changed
 	 * @return String
 	 * @throws ShopSystemException
 	 * @throws EconomyPlayerException
 	 * @throws GeneralEconomyException
 	 */
-	public String editShopItem(int slot, String amount, String sellPrice, String buyPrice)
+	public String editShopItem(int slot, Integer amount, Double sellPrice, Double buyPrice)
 			throws ShopSystemException, EconomyPlayerException, GeneralEconomyException;
 
 	/**
@@ -171,13 +135,6 @@ public abstract interface AbstractShop {
 			throws GeneralEconomyException, ShopSystemException, EconomyPlayerException;
 
 	/**
-	 * Change the profession of a shopvillager.
-	 * 
-	 * @param profession
-	 */
-	public void changeProfession(Profession profession);
-
-	/**
 	 * Change the name of a shop. Name gets checked, if a shop with this name
 	 * already exists.
 	 * 
@@ -198,34 +155,13 @@ public abstract interface AbstractShop {
 	 * @throws GeneralEconomyException
 	 * @throws EconomyPlayerException
 	 */
-	public void changeShopSize(int newSize) throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
-
-	/**
-	 * This method moves a shop to a new location.
-	 * 
-	 * @param location
-	 * @throws TownSystemException
-	 * @throws EconomyPlayerException
-	 */
-	public void moveShop(Location location) throws TownSystemException, EconomyPlayerException;
-
-	/**
-	 * Despawns the shop villager.
-	 */
-	public void despawnVillager();
+	// public void changeShopSize(int newSize) throws ShopSystemException,
+	// GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * Despawns the shop villager.
 	 */
 	public void deleteShop();
-
-	/**
-	 * Opens the shop inventory.
-	 * 
-	 * @param player
-	 * @throws ShopSystemException
-	 */
-	public void openShopInventory(Player player) throws ShopSystemException;
 
 	/**
 	 * Opens the slot editor GUI.
@@ -246,18 +182,4 @@ public abstract interface AbstractShop {
 	 * @throws ShopSystemException
 	 */
 	public void openEditor(Player player) throws ShopSystemException;
-
-	/**
-	 * Returns the size of the shop.
-	 * 
-	 * @return size
-	 */
-	public int getSize();
-
-	/**
-	 * Returns the shop villager.
-	 * 
-	 * @return shop villager
-	 */
-	public Villager getShopVillager();
 }

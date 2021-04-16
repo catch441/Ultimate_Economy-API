@@ -6,22 +6,13 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.common.logic.api.EconomyVillagerValidationHandler;
 import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.shopsystem.logic.ShopSystemException;
 import org.ue.townsystem.logic.TownSystemException;
 
-public interface ShopValidationHandler {
-
-	/**
-	 * Check for one price is greater then zero if both prices are available.
-	 * 
-	 * @param sellPrice
-	 * @param buyPrice
-	 * @throws ShopSystemException
-	 */
-	public void checkForOnePriceGreaterThenZeroIfBothAvailable(String sellPrice, String buyPrice)
-			throws ShopSystemException;
+public interface ShopValidationHandler extends EconomyVillagerValidationHandler {
 
 	/**
 	 * Check for both prices greater then zero.
@@ -31,41 +22,6 @@ public interface ShopValidationHandler {
 	 * @throws ShopSystemException
 	 */
 	public void checkForPricesGreaterThenZero(double sellPrice, double buyPrice) throws ShopSystemException;
-
-	/**
-	 * Check for slot is not empty.
-	 * 
-	 * @param slot
-	 * @param inventory
-	 * @param reservedSlots
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
-	 */
-	public void checkForSlotIsNotEmpty(int slot, Inventory inventory, int reservedSlots)
-			throws GeneralEconomyException, ShopSystemException;
-	
-	/**
-	 * Check for slot is empty.
-	 * 
-	 * @param slot
-	 * @param inventory
-	 * @param reservedSlots
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
-	 */
-	public void checkForSlotIsEmpty(int slot, Inventory inventory, int reservedSlots)
-			throws GeneralEconomyException, EconomyPlayerException;
-	
-	/**
-	 * Returns true, if the slot is empty.
-	 * 
-	 * @param slot
-	 * @param inventory
-	 * @param reservedSlots
-	 * @return isEmpzy
-	 * @throws GeneralEconomyException
-	 */
-	public boolean isSlotEmpty(int slot, Inventory inventory, int reservedSlots) throws GeneralEconomyException;
 	
 	/**
 	 * Check for a valid amount.
@@ -73,28 +29,7 @@ public interface ShopValidationHandler {
 	 * @param amount
 	 * @throws GeneralEconomyException
 	 */
-	public void checkForValidAmount(String amount) throws GeneralEconomyException;
-	
-	/**
-	 * Check for a valid price.
-	 * 
-	 * @param price
-	 * @throws GeneralEconomyException
-	 */
-	public void checkForValidPrice(String price) throws GeneralEconomyException;
-	
-	/**
-	 * Check for resize is possible.
-	 * 
-	 * @param inventory
-	 * @param oldSize
-	 * @param newSize
-	 * @param reservedSlots
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
-	 */
-	public void checkForResizePossible(Inventory inventory, int oldSize, int newSize, int reservedSlots)
-			throws ShopSystemException, GeneralEconomyException;
+	public void checkForValidAmount(int amount) throws GeneralEconomyException;
 	
 	/**
 	 * Check for item does not exist.

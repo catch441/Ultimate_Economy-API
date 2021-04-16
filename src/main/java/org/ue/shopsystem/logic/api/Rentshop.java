@@ -16,8 +16,11 @@ public interface Rentshop extends Playershop {
 	 * @param spawnLocation
 	 * @param size
 	 * @param rentalFee
+	 * @throws EconomyPlayerException
+	 * @throws GeneralEconomyException
 	 */
-	public void setupNew(String shopId, Location spawnLocation, int size, double rentalFee);
+	public void setupNew(String shopId, Location spawnLocation, int size, double rentalFee)
+			throws GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * Returns the expires at time in minecraft ticks.
@@ -39,9 +42,10 @@ public interface Rentshop extends Playershop {
 	 * 
 	 * @throws GeneralEconomyException
 	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 * 
 	 */
-	public void resetShop() throws ShopSystemException, GeneralEconomyException;
+	public void resetShop() throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * Change the rental fee of this shop. Does not affect a active rent.

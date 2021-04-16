@@ -16,8 +16,11 @@ public interface Playershop extends AbstractShop {
 	 * @param shopId
 	 * @param spawnLocation
 	 * @param size
+	 * @throws EconomyPlayerException
+	 * @throws GeneralEconomyException
 	 */
-	public void setupNew(String name, EconomyPlayer owner, String shopId, Location spawnLocation, int size);
+	public void setupNew(String name, EconomyPlayer owner, String shopId, Location spawnLocation, int size)
+			throws GeneralEconomyException, EconomyPlayerException;
 
 	/**
 	 * This method sets the owner of this shop. The owner and the shopname are
@@ -51,8 +54,10 @@ public interface Playershop extends AbstractShop {
 	 * @param stock positive
 	 * @exception GeneralEconomyException
 	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 */
-	public void decreaseStock(int slot, int stock) throws GeneralEconomyException, ShopSystemException;
+	public void decreaseStock(int slot, int stock)
+			throws GeneralEconomyException, ShopSystemException, EconomyPlayerException;
 
 	/**
 	 * This method increases the stock of an shopitem in a playershop.
@@ -61,8 +66,10 @@ public interface Playershop extends AbstractShop {
 	 * @param stock positive
 	 * @exception GeneralEconomyException
 	 * @throws ShopSystemException
+	 * @throws EconomyPlayerException
 	 */
-	public void increaseStock(int slot, int stock) throws GeneralEconomyException, ShopSystemException;
+	public void increaseStock(int slot, int stock)
+			throws GeneralEconomyException, ShopSystemException, EconomyPlayerException;
 
 	/**
 	 * This method returns true, if the stock of this item greater then the item
@@ -72,6 +79,7 @@ public interface Playershop extends AbstractShop {
 	 * @return booelan
 	 * @exception ShopSystemException
 	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public boolean isAvailable(int slot) throws ShopSystemException, GeneralEconomyException;
+	public boolean isAvailable(int slot) throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
 }

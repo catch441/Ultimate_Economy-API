@@ -1,10 +1,21 @@
-package org.ue.general.api;
+package org.ue.common.logic.api;
 
 import java.util.List;
 
 import org.ue.general.GeneralEconomyException;
 
-public interface GeneralEconomyValidationHandler {
+public interface GeneralValidationHandler {
+
+	/**
+	 * Check if a given string value is valid for a given enum value list.
+	 * 
+	 * @param <T>
+	 * @param enumList
+	 * @param value
+	 * @throws GeneralEconomyException
+	 */
+	public <T extends Enum<T>> void checkForValidEnum(Enum<? extends T>[] enumList, String value)
+			throws GeneralEconomyException;
 
 	/**
 	 * Check if the slot is inside the size range.
@@ -44,11 +55,12 @@ public interface GeneralEconomyValidationHandler {
 	/**
 	 * Check if the value is not in the list.
 	 * 
+	 * @param <T>
 	 * @param list
 	 * @param value
 	 * @throws GeneralEconomyException
 	 */
-	public void checkForValueNotInList(List<String> list, String value) throws GeneralEconomyException;
+	public <T> void checkForValueNotInList(List<T> list, T value) throws GeneralEconomyException;
 
 	/**
 	 * Check for value is in list.
@@ -57,7 +69,7 @@ public interface GeneralEconomyValidationHandler {
 	 * @param value
 	 * @throws GeneralEconomyException
 	 */
-	public void checkForValueInList(List<String> list, String value) throws GeneralEconomyException;
+	public <T> void checkForValueInList(List<T> list, T value) throws GeneralEconomyException;
 
 	/**
 	 * Check for value exists. Throws a {@link GeneralEconomyException} with the

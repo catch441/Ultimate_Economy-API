@@ -3,11 +3,12 @@ package org.ue.shopsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.ue.economyplayer.logic.EconomyPlayerException;
 import org.ue.general.GeneralEconomyException;
 import org.ue.townsystem.logic.TownSystemException;
 
 public interface RentshopManager {
-	
+
 	/**
 	 * Starts the rent daily task, that checks, if the rentshop has to be resetted.
 	 */
@@ -19,7 +20,7 @@ public interface RentshopManager {
 	 * @return String
 	 */
 	public String generateFreeRentShopId();
-	
+
 	/**
 	 * This method returns a rentshop by the shipId.
 	 * 
@@ -28,7 +29,7 @@ public interface RentshopManager {
 	 * @throws GeneralEconomyException
 	 */
 	public Rentshop getRentShopById(String id) throws GeneralEconomyException;
-	
+
 	/**
 	 * This method returns a rentshop by a unique name.
 	 * <p>
@@ -41,7 +42,7 @@ public interface RentshopManager {
 	 * @throws GeneralEconomyException
 	 */
 	public Rentshop getRentShopByUniqueName(String name) throws GeneralEconomyException;
-	
+
 	/**
 	 * This method returns a list of rentshop names. name = name_owner || RentShop#
 	 * + id for unique names
@@ -49,14 +50,14 @@ public interface RentshopManager {
 	 * @return List of Strings
 	 */
 	public List<String> getRentShopUniqueNameList();
-	
+
 	/**
 	 * Returns all rentshops.
 	 * 
 	 * @return list of rent shops
 	 */
 	public List<Rentshop> getRentShops();
-	
+
 	/**
 	 * This method should be used to create a new rentshop.
 	 * 
@@ -65,21 +66,23 @@ public interface RentshopManager {
 	 * @param rentalFee
 	 * @return rentshop
 	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public Rentshop createRentShop(Location spawnLocation, int size, double rentalFee) throws GeneralEconomyException;
-	
+	public Rentshop createRentShop(Location spawnLocation, int size, double rentalFee)
+			throws GeneralEconomyException, EconomyPlayerException;
+
 	/**
 	 * This method should be used to delete a rentshop.
 	 * 
 	 * @param rentshop
 	 */
 	public void deleteRentShop(Rentshop rentshop);
-	
+
 	/**
 	 * This method despawns all rentshop villager.
 	 */
 	public void despawnAllVillagers();
-	
+
 	/**
 	 * This method loads all rentShops. EconomyPlayers have to be loaded first.
 	 * 
