@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.ue.bank.logic.api.BankAccount;
 import org.ue.common.logic.api.GeneralValidationHandler;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
 import org.ue.jobsystem.logic.api.Job;
 
-public interface EconomyPlayerValidationHandler extends GeneralValidationHandler {
+public interface EconomyPlayerValidationHandler extends GeneralValidationHandler<EconomyPlayerException> {
 
 	/**
 	 * Check for has enough money.
@@ -17,10 +15,8 @@ public interface EconomyPlayerValidationHandler extends GeneralValidationHandler
 	 * @param amount
 	 * @param personal
 	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
 	 */
-	public void checkForEnoughMoney(BankAccount account, double amount, boolean personal)
-			throws EconomyPlayerException, GeneralEconomyException;
+	public void checkForEnoughMoney(BankAccount account, double amount, boolean personal) throws EconomyPlayerException;
 
 	/**
 	 * Check for joined town.
@@ -57,28 +53,4 @@ public interface EconomyPlayerValidationHandler extends GeneralValidationHandler
 	 * @throws EconomyPlayerException
 	 */
 	public void checkForJobNotJoined(List<Job> joinedJobs, Job job) throws EconomyPlayerException;
-
-	/**
-	 * Check for not reached max homes.
-	 * 
-	 * @param reachedMaxHomes
-	 * @throws EconomyPlayerException
-	 */
-	public void checkForNotReachedMaxHomes(boolean reachedMaxHomes) throws EconomyPlayerException;
-
-	/**
-	 * Check for not reached may joined towns.
-	 * 
-	 * @param reachedMaxJoinedTowns
-	 * @throws EconomyPlayerException
-	 */
-	public void checkForNotReachedMaxJoinedTowns(boolean reachedMaxJoinedTowns) throws EconomyPlayerException;
-
-	/**
-	 * Check for not reached max joined jobs.
-	 * 
-	 * @param reachedMaxJoinedJobs
-	 * @throws EconomyPlayerException
-	 */
-	public void checkForNotReachedMaxJoinedJobs(boolean reachedMaxJoinedJobs) throws EconomyPlayerException;
 }

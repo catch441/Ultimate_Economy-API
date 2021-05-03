@@ -2,8 +2,6 @@ package org.ue.bank.logic.api;
 
 import java.util.List;
 
-import org.ue.general.GeneralEconomyException;
-
 public interface BankManager {
 
 	/**
@@ -20,10 +18,9 @@ public interface BankManager {
 	 * @param startAmount
 	 * @param externalIban
 	 * @return bank account
-	 * @throws GeneralEconomyException
+	 * @throws BankException
 	 */
-	public BankAccount createExternalBankAccount(double startAmount, String externalIban)
-			throws GeneralEconomyException;
+	public BankAccount createExternalBankAccount(double startAmount, String externalIban) throws BankException;
 
 	/**
 	 * Deletes a bank account.
@@ -43,9 +40,9 @@ public interface BankManager {
 	 * 
 	 * @param iban
 	 * @return the bank account
-	 * @throws GeneralEconomyException
+	 * @throws BankException
 	 */
-	public BankAccount getBankAccountByIban(String iban) throws GeneralEconomyException;
+	public BankAccount getBankAccountByIban(String iban) throws BankException;
 
 	/**
 	 * Returns a list of bank accounts.

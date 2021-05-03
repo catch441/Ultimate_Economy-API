@@ -1,30 +1,10 @@
 package org.ue.common.logic.api;
 
+import java.util.Set;
+
 import org.bukkit.inventory.Inventory;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.logic.ShopSystemException;
 
-public interface EconomyVillagerValidationHandler extends GeneralValidationHandler {
-
-	/**
-	 * Checks if a slot in a given inventory is empty.
-	 * 
-	 * @param inventory
-	 * @param slot
-	 * @throws EconomyPlayerException if slot is occupied
-	 */
-	public void checkForSlotIsEmpty(Inventory inventory, int slot) throws EconomyPlayerException;
-	
-	/**
-	 * Check for slot is not empty.
-	 * 
-	 * @param slot
-	 * @param inventory
-	 * @throws EconomyPlayerException
-	 */
-	public void checkForSlotIsNotEmpty(int slot, Inventory inventory)
-			throws EconomyPlayerException;
+public interface EconomyVillagerValidationHandler<T extends GeneralEconomyException> extends GeneralValidationHandler<T> {
 
 	/**
 	 * Check for resize is possible.
@@ -33,9 +13,26 @@ public interface EconomyVillagerValidationHandler extends GeneralValidationHandl
 	 * @param oldSize
 	 * @param newSize
 	 * @param reservedSlots
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
 	public void checkForResizePossible(Inventory inventory, int oldSize, int newSize, int reservedSlots)
-			throws ShopSystemException, GeneralEconomyException;
+			throws T;
+	
+	/**
+	 * Check for slot is empty.
+	 * 
+	 * @param occupiedSlots
+	 * @param slot
+	 * @throws <T>
+	 */
+	public void checkForSlotIsEmpty(Set<Integer> occupiedSlots, int slot) throws T;
+
+	/**
+	 * Check for slot is not empty.
+	 * 
+	 * @param occupiedSlots
+	 * @param slot
+	 * @throws <T>
+	 */
+	public void checkForSlotIsNotEmpty(Set<Integer> occupiedSlots, int slot) throws T;
 }

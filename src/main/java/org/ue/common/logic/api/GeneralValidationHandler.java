@@ -2,20 +2,25 @@ package org.ue.common.logic.api;
 
 import java.util.List;
 
-import org.ue.general.GeneralEconomyException;
-
-public interface GeneralValidationHandler {
+public interface GeneralValidationHandler<T extends GeneralEconomyException> {
 
 	/**
 	 * Check if a given string value is valid for a given enum value list.
 	 * 
-	 * @param <T>
+	 * @param <S>
 	 * @param enumList
 	 * @param value
 	 * @throws GeneralEconomyException
 	 */
-	public <T extends Enum<T>> void checkForValidEnum(Enum<? extends T>[] enumList, String value)
-			throws GeneralEconomyException;
+	public <S extends Enum<S>> void checkForValidEnum(Enum<? extends S>[] enumList, String value) throws T;
+
+	/**
+	 * Check for not reached the maximum.
+	 * 
+	 * @param reachedMax
+	 * @throws T
+	 */
+	public void checkForNotReachedMax(boolean reachedMax) throws T;
 
 	/**
 	 * Check if the slot is inside the size range.
@@ -23,53 +28,54 @@ public interface GeneralValidationHandler {
 	 * @param slot
 	 * @param size subtract the reserved slots from the size before calling this
 	 *             method
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public void checkForValidSlot(int slot, int size) throws GeneralEconomyException;
+	public void checkForValidSlot(int slot, int size) throws T;
 
 	/**
 	 * Check if the value is a multiple of 9 and not greater then 54 and not smaller
 	 * then 9.
 	 * 
 	 * @param size
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public void checkForValidSize(int size) throws GeneralEconomyException;
+	public void checkForValidSize(int size) throws T;
 
 	/**
-	 * Check if the value is >= 0.
+	 * Check if the value is >= 0 and != null.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public void checkForPositiveValue(double value) throws GeneralEconomyException;
+	public void checkForPositiveValue(Double value) throws T;
 
 	/**
 	 * Check if value is > 0.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public void checkForValueGreaterZero(double value) throws GeneralEconomyException;
+	public void checkForValueGreaterZero(double value) throws T;
 
 	/**
 	 * Check if the value is not in the list.
 	 * 
-	 * @param <T>
+	 * @param <S>
 	 * @param list
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public <T> void checkForValueNotInList(List<T> list, T value) throws GeneralEconomyException;
+	public <S> void checkForValueNotInList(List<S> list, S value) throws T;
 
 	/**
 	 * Check for value is in list.
 	 * 
+	 * @param <S>
 	 * @param list
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public <T> void checkForValueInList(List<T> list, T value) throws GeneralEconomyException;
+	public <S> void checkForValueInList(List<S> list, S value) throws T;
 
 	/**
 	 * Check for value exists. Throws a {@link GeneralEconomyException} with the
@@ -77,7 +83,7 @@ public interface GeneralValidationHandler {
 	 * 
 	 * @param value
 	 * @param name
-	 * @throws GeneralEconomyException
+	 * @throws <T>
 	 */
-	public void checkForValueExists(Object value, String name) throws GeneralEconomyException;
+	public void checkForValueExists(Object value, String name) throws T;
 }

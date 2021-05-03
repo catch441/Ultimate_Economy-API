@@ -4,12 +4,8 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.ue.common.logic.api.EconomyVillager;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.jobsystem.logic.JobSystemException;
-import org.ue.townsystem.logic.TownSystemException;
 
-public interface Jobcenter extends EconomyVillager {
+public interface Jobcenter extends EconomyVillager<JobsystemException> {
 
 	/**
 	 * Setup a new jobcenter.
@@ -17,21 +13,15 @@ public interface Jobcenter extends EconomyVillager {
 	 * @param name
 	 * @param spawnLocation
 	 * @param size
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
 	 */
-	public void setupNew(String name, Location spawnLocation, int size) throws GeneralEconomyException, EconomyPlayerException;
+	public void setupNew(String name, Location spawnLocation, int size);
 
 	/**
 	 * Setup an existing shop.
 	 * 
 	 * @param name
-	 * @throws TownSystemException     if the world of the spawnlocation does not
-	 *                                 exist
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
 	 */
-	public void setupExisting(String name) throws TownSystemException, GeneralEconomyException, EconomyPlayerException;
+	public void setupExisting(String name);
 
 	/**
 	 * This method adds a job to this jobcenter.
@@ -39,20 +29,17 @@ public interface Jobcenter extends EconomyVillager {
 	 * @param job
 	 * @param itemMaterial
 	 * @param slot
-	 * @throws JobSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public void addJob(Job job, String itemMaterial, int slot)
-			throws JobSystemException, EconomyPlayerException, GeneralEconomyException;
+	public void addJob(Job job, String itemMaterial, int slot) throws JobsystemException;
 
 	/**
 	 * This method removes a job from this jobcenter.
 	 * 
 	 * @param job
-	 * @throws JobSystemException
+	 * @throws JobsystemException 
 	 */
-	public void removeJob(Job job) throws JobSystemException;
+	public void removeJob(Job job) throws JobsystemException;
 
 	/**
 	 * This method returns the name of this jobcenter.

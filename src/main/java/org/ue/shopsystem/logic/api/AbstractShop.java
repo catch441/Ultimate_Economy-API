@@ -5,24 +5,20 @@ import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.bank.logic.api.BankException;
 import org.ue.common.logic.api.EconomyVillager;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.logic.ShopSystemException;
-import org.ue.townsystem.logic.TownSystemException;
 
-public abstract interface AbstractShop extends EconomyVillager {
+public abstract interface AbstractShop extends EconomyVillager<ShopsystemException> {
 
 	/**
 	 * Setup an existing shop.
 	 * 
 	 * @param shopId
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
-	 * @throws TownSystemException
+	 * @throws EconomyPlayerException if the shop owner is not an known economy
+	 *                                player
 	 */
-	public void setupExisting(String shopId)
-			throws TownSystemException, GeneralEconomyException, EconomyPlayerException;
+	public void setupExisting(String shopId) throws EconomyPlayerException;
 
 	/**
 	 * Returns the name of this shop.
@@ -42,29 +38,26 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * Returns the itemslist of this shop.
 	 * 
 	 * @return list of ShopItems
-	 * @throws ShopSystemException
 	 */
-	public List<ShopItem> getItemList() throws ShopSystemException;
+	public List<ShopItem> getItemList();
 
 	/**
 	 * Returns a itemstack by a given slot.
 	 * 
 	 * @param slot
 	 * @return itemstack
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
 	 */
-	public ShopItem getShopItem(int slot) throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
+	public ShopItem getShopItem(int slot) throws ShopsystemException;
 
 	/**
 	 * Returns a shop item.
 	 * 
 	 * @param stack
 	 * @return ShopItem
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
 	 */
-	public ShopItem getShopItem(ItemStack stack) throws ShopSystemException;
+	public ShopItem getShopItem(ItemStack stack) throws ShopsystemException;
 
 	/**
 	 * This method adds a item to this shop.
@@ -73,22 +66,18 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * @param sellPrice
 	 * @param buyPrice
 	 * @param itemStack
-	 * @throws ShopSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
 	public void addShopItem(int slot, double sellPrice, double buyPrice, ItemStack itemStack)
-			throws ShopSystemException, EconomyPlayerException, GeneralEconomyException;
+			throws ShopsystemException;
 
 	/**
 	 * This method removes a item from this shop.
 	 * 
 	 * @param slot intern
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
 	 */
-	public void removeShopItem(int slot) throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
+	public void removeShopItem(int slot) throws ShopsystemException;
 
 	/**
 	 * This method edits an existing item in this shop.
@@ -98,12 +87,9 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * @param sellPrice null, if not changed
 	 * @param buyPrice  null, if not changed
 	 * @return String
-	 * @throws ShopSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public String editShopItem(int slot, Integer amount, Double sellPrice, Double buyPrice)
-			throws ShopSystemException, EconomyPlayerException, GeneralEconomyException;
+	public String editShopItem(int slot, Integer amount, Double sellPrice, Double buyPrice) throws ShopsystemException;
 
 	/**
 	 * Buy the shop item from a specific slot for the given economy player. The
@@ -112,12 +98,12 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * @param slot
 	 * @param ecoPlayer
 	 * @param sendMessage
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 * @throws EconomyPlayerException
-	 * @throws ShopSystemException
+	 * @throws BankException
 	 */
 	public void buyShopItem(int slot, EconomyPlayer ecoPlayer, boolean sendMessage)
-			throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
+			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
 	 * Sells a shopitem to this shop. Make sure, that the player has the amount of
@@ -127,36 +113,23 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * @param amount
 	 * @param ecoPlayer
 	 * @param sendMessage
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
+	 * @throws BankException          when the calculated sellprice is negative
+	 *                                (shopItem.getSellPrice() /
+	 *                                shopItem.getAmount() * amount;)
 	 * @throws EconomyPlayerException
 	 */
 	public void sellShopItem(int slot, int amount, EconomyPlayer ecoPlayer, boolean sendMessage)
-			throws GeneralEconomyException, ShopSystemException, EconomyPlayerException;
+			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
 	 * Change the name of a shop. Name gets checked, if a shop with this name
 	 * already exists.
 	 * 
 	 * @param name Forbidden char is "_"
-	 * @throws ShopSystemException     thrown, when a shop with this name already
-	 *                                 exists or the name contains "_"
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public abstract void changeShopName(String name) throws ShopSystemException, GeneralEconomyException;
-
-	/**
-	 * Change the size of the shop. Size gets validated. With only the info slot in
-	 * the shop. Have to be overridden, if you have more then one reserved shot in
-	 * your shop.
-	 * 
-	 * @param newSize
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
-	 */
-	// public void changeShopSize(int newSize) throws ShopSystemException,
-	// GeneralEconomyException, EconomyPlayerException;
+	public abstract void changeShopName(String name) throws ShopsystemException;
 
 	/**
 	 * Despawns the shop villager.
@@ -168,10 +141,9 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * 
 	 * @param player
 	 * @param slot   internal
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public void openSlotEditor(Player player, int slot) throws ShopSystemException, GeneralEconomyException;
+	public void openSlotEditor(Player player, int slot) throws ShopsystemException;
 
 	/**
 	 * Opens the editor GUI with occupied and free slots The 2 last slots are not
@@ -179,7 +151,7 @@ public abstract interface AbstractShop extends EconomyVillager {
 	 * method.
 	 * 
 	 * @param player
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException rentshop: if the shop is not rented
 	 */
-	public void openEditor(Player player) throws ShopSystemException;
+	public void openEditor(Player player) throws ShopsystemException;
 }

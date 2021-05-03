@@ -2,8 +2,6 @@ package org.ue.shopsystem.logic.api;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.logic.ShopSystemException;
 
 public interface ShopSlotEditorHandler {
 
@@ -25,10 +23,8 @@ public interface ShopSlotEditorHandler {
 	 * Set the selected editor slot.
 	 * 
 	 * @param slot
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
 	 */
-	public void setSelectedSlot(int slot) throws ShopSystemException, GeneralEconomyException;
+	public void setSelectedSlot(int slot);
 	
 	/**
 	 * This method handles the SlotEditor for the InventoryClickEvent.

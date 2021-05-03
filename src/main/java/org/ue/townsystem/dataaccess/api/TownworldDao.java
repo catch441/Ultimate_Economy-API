@@ -3,20 +3,12 @@ package org.ue.townsystem.dataaccess.api;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.ue.common.dataaccess.api.EconomyVillagerDao;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.general.GeneralEconomyException;
-import org.ue.townsystem.logic.TownSystemException;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.townsystem.logic.api.TownsystemException;
 
-public interface TownworldDao {
-
-	/**
-	 * Saves the plot villager location.
-	 * 
-	 * @param townName
-	 * @param chunkCoords
-	 * @param location
-	 */
-	public void savePlotVillagerLocation(String townName, String chunkCoords, Location location);
+public interface TownworldDao extends EconomyVillagerDao {
 
 	/**
 	 * Saves the owner of the plot.
@@ -53,14 +45,6 @@ public interface TownworldDao {
 	 * @param salePrice
 	 */
 	public void savePlotSalePrice(String townName, String chunkCoords, double salePrice);
-
-	/**
-	 * Saves the townmanager location.
-	 * 
-	 * @param townName
-	 * @param location
-	 */
-	public void saveTownManagerLocation(String townName, Location location);
 
 	/**
 	 * Saves the town spawn.
@@ -127,24 +111,14 @@ public interface TownworldDao {
 	public void saveTownBankIban(String townName, String iban);
 
 	/**
-	 * Loads the plot villager location.
-	 * 
-	 * @param townName
-	 * @param chunkCoords
-	 * @return location
-	 * @throws TownSystemException
-	 */
-	public Location loadPlotVillagerLocation(String townName, String chunkCoords) throws TownSystemException;
-
-	/**
 	 * Loads owner.
 	 * 
 	 * @param townName
 	 * @param chunkCoords
 	 * @return economy player
-	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public EconomyPlayer loadPlotOwner(String townName, String chunkCoords) throws GeneralEconomyException;
+	public EconomyPlayer loadPlotOwner(String townName, String chunkCoords) throws EconomyPlayerException;
 
 	/**
 	 * Loads the plot sale price.
@@ -186,9 +160,9 @@ public interface TownworldDao {
 	 * 
 	 * @param townName
 	 * @return mayor
-	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException 
 	 */
-	public EconomyPlayer loadMayor(String townName) throws GeneralEconomyException;
+	public EconomyPlayer loadMayor(String townName) throws EconomyPlayerException;
 
 	/**
 	 * Loads all deputies of a town.
@@ -211,10 +185,10 @@ public interface TownworldDao {
 	 * 
 	 * @param townName
 	 * @return townspawn
-	 * @throws TownSystemException
+	 * @throws TownsystemException
 	 * @throws NumberFormatException
 	 */
-	public Location loadTownSpawn(String townName) throws TownSystemException, NumberFormatException;
+	public Location loadTownSpawn(String townName) throws TownsystemException, NumberFormatException;
 
 	/**
 	 * Loads the citizens of a town.
@@ -224,15 +198,6 @@ public interface TownworldDao {
 	 */
 	public List<EconomyPlayer> loadCitizens(String townName);
 
-	/**
-	 * Loads the townmanager location.
-	 * 
-	 * @param townName
-	 * @return townmanager location
-	 * @throws TownSystemException
-	 */
-	public Location loadTownManagerLocation(String townName) throws TownSystemException;
-	
 	/**
 	 * Loads the names of all towns in a townworld.
 	 * 
@@ -290,6 +255,7 @@ public interface TownworldDao {
 
 	/**
 	 * Setup the savefile.
+	 * 
 	 * @param name
 	 */
 	public void setupSavefile(String name);

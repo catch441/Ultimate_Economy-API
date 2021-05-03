@@ -1,24 +1,22 @@
 package org.ue.bank.logic.api;
 
-import org.ue.general.GeneralEconomyException;
-
 public interface BankAccount {
 
 	/**
 	 * Decrease the bank amount.
 	 * 
 	 * @param amount has to be positive
-	 * @throws GeneralEconomyException 
+	 * @throws BankException 
 	 */
-	public void decreaseAmount(double amount) throws GeneralEconomyException;
+	public void decreaseAmount(double amount) throws BankException;
 	
 	/**
 	 * Increase the bank amount.
 	 * 
 	 * @param amount has to be positive
-	 * @throws GeneralEconomyException 
+	 * @throws BankException 
 	 */
-	public void increaseAmount(double amount) throws GeneralEconomyException;
+	public void increaseAmount(double amount) throws BankException;
 	
 	/**
 	 * Returns the bank amount.
@@ -37,7 +35,7 @@ public interface BankAccount {
 	 * Returns true if the account has enough money.
 	 * @param amount
 	 * @return boolean
-	 * @throws GeneralEconomyException
+	 * @throws BankException 
 	 */
-	boolean hasAmount(double amount) throws GeneralEconomyException;
+	boolean hasAmount(double amount) throws BankException;
 }

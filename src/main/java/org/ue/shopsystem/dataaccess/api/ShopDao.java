@@ -26,34 +26,34 @@ public interface ShopDao extends EconomyVillagerDao {
 	/**
 	 * Saves a shop item sell price.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @param sellPrice
 	 */
-	public void saveShopItemSellPrice(int itemHash, double sellPrice);
+	public void saveShopItemSellPrice(int slot, double sellPrice);
 
 	/**
 	 * Saves a shop item buy price.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @param buyPrice
 	 */
-	public void saveShopItemBuyPrice(int itemHash, double buyPrice);
+	public void saveShopItemBuyPrice(int slot, double buyPrice);
 
 	/**
 	 * Saves a shop item amount.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @param amount
 	 */
-	public void saveShopItemAmount(int itemHash, int amount);
+	public void saveShopItemAmount(int slot, int amount);
 
 	/**
 	 * Saves the stock for a item.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @param stock
 	 */
-	public void saveStock(int itemHash, int stock);
+	public void saveStock(int slot, int stock);
 
 	/**
 	 * Saves the shop owner.
@@ -93,25 +93,25 @@ public interface ShopDao extends EconomyVillagerDao {
 	/**
 	 * Loads a shop item.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @return shop item
 	 */
-	public ShopItem loadItem(int itemHash);
+	public ShopItem loadItem(int slot);
 
 	/**
-	 * Loads the item hash list.
+	 * Loads the item slot list.
 	 * 
 	 * @return list of integers
 	 */
-	public List<Integer> loadItemHashList();
+	public List<Integer> loadItemSlotList();
 
 	/**
 	 * Loads the stock of a item.
 	 * 
-	 * @param itemHash
+	 * @param slot
 	 * @return stock
 	 */
-	public int loadStock(int itemHash);
+	public int loadStock(int slot);
 
 	/**
 	 * Loads the shop owner.
@@ -155,11 +155,11 @@ public interface ShopDao extends EconomyVillagerDao {
 
 	/**
 	 * @since 1.2.6
-	 * @param itemHash
+	 * @param slot
 	 * @return true, if corrupted found and removed
 	 * @deprecated removed items, that are corrupted. The newer savefile system
 	 *             cannot handle old corrupted items, that are ignored before.
 	 */
 	@Deprecated
-	public boolean removeIfCorrupted(int itemHash);
+	public boolean removeIfCorrupted(int slot);
 }

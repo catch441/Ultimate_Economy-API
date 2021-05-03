@@ -4,10 +4,6 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.logic.ShopSystemException;
-import org.ue.townsystem.logic.TownSystemException;
 
 public interface PlayershopManager {
 
@@ -17,7 +13,7 @@ public interface PlayershopManager {
 	 * @return String
 	 */
 	public String generateFreePlayerShopId();
-	
+
 	/**
 	 * This method returns a list of playershop names. name = name_owner for unique
 	 * names
@@ -25,40 +21,39 @@ public interface PlayershopManager {
 	 * @return List of Strings
 	 */
 	public List<String> getPlayerShopUniqueNameList();
-	
+
 	/**
-	 * This method returns a playershop by it's name. name =
-	 * name_owner unique names
+	 * This method returns a playershop by it's name. name = name_owner unique names
 	 * 
 	 * @param name
 	 * @return PlayerShop
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public Playershop getPlayerShopByUniqueName(String name) throws GeneralEconomyException;
-	
+	public Playershop getPlayerShopByUniqueName(String name) throws ShopsystemException;
+
 	/**
 	 * This method returns a PlayerShop by it's id.
 	 * 
 	 * @param id
 	 * @return PlayerShop
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public Playershop getPlayerShopById(String id) throws GeneralEconomyException;
-	
+	public Playershop getPlayerShopById(String id) throws ShopsystemException;
+
 	/**
 	 * Returns all player shops.
 	 * 
 	 * @return list of playershops
 	 */
 	public List<Playershop> getPlayerShops();
-	
+
 	/**
 	 * Returns a list of all player shop ids.
 	 * 
 	 * @return list of playershop ids
 	 */
 	public List<String> getPlayershopIdList();
-	
+
 	/**
 	 * This method should be used to create a new playershop.
 	 * 
@@ -66,14 +61,11 @@ public interface PlayershopManager {
 	 * @param spawnLocation
 	 * @param size
 	 * @param ecoPlayer
-	 * @throws ShopSystemException
-	 * @throws TownSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
 	public void createPlayerShop(String name, Location spawnLocation, int size, EconomyPlayer ecoPlayer)
-			throws ShopSystemException, TownSystemException, EconomyPlayerException, GeneralEconomyException;
-	
+			throws ShopsystemException;
+
 	/**
 	 * This method should be used to delete a playershop.
 	 * 
@@ -81,12 +73,12 @@ public interface PlayershopManager {
 	 * @throws ShopSystemException
 	 */
 	public void deletePlayerShop(Playershop playershop);
-	
+
 	/**
 	 * This method despawns all playershop villager.
 	 */
 	public void despawnAllVillagers();
-	
+
 	/**
 	 * This method loads all playerShops. EconomyPlayer have to be loaded first.
 	 * 

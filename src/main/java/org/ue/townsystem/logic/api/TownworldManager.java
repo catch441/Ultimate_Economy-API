@@ -2,11 +2,7 @@ package org.ue.townsystem.logic.api;
 
 import java.util.List;
 
-import org.bukkit.Chunk;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.townsystem.logic.TownSystemException;
 
 public interface TownworldManager {
 
@@ -15,18 +11,18 @@ public interface TownworldManager {
 	 * 
 	 * @param name
 	 * @return Townworld
-	 * @throws TownSystemException
+	 * @throws TownsystemException 
 	 */
-	public Townworld getTownWorldByName(String name) throws TownSystemException;
+	public Townworld getTownWorldByName(String name) throws TownsystemException;
 
 	/**
 	 * Returns a town by townname.
 	 * 
 	 * @param townName
 	 * @return Town
-	 * @throws GeneralEconomyException
+	 * @throws TownsystemException 
 	 */
-	public Town getTownByName(String townName) throws GeneralEconomyException;
+	public Town getTownByName(String townName) throws TownsystemException;
 
 	/**
 	 * This method returns a list of all townworlds.
@@ -59,21 +55,17 @@ public interface TownworldManager {
 	 * This method should be used to create/enble a new townworld.
 	 * 
 	 * @param world
-	 * @throws TownSystemException
+	 * @throws TownsystemException
 	 */
-	public void createTownWorld(String world)
-			throws TownSystemException;
+	public void createTownWorld(String world) throws TownsystemException;
 
 	/**
 	 * This method should be used to delete/disable a townworld.
 	 * 
 	 * @param world
-	 * @throws TownSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws TownsystemException 
 	 */
-	public void deleteTownWorld(String world)
-			throws TownSystemException, EconomyPlayerException, GeneralEconomyException;
+	public void deleteTownWorld(String world) throws TownsystemException;
 
 	/**
 	 * This method loads all townworlds from the save file. Loads all towns and
@@ -83,13 +75,13 @@ public interface TownworldManager {
 	public void loadAllTownWorlds();
 
 	/**
-	 * Handles the townworld location check.
+	 * Handles the townworld location check, if the player is online.
 	 * 
 	 * @param worldname
 	 * @param chunk
 	 * @param ecoPlayer
 	 */
-	public void performTownWorldLocationCheck(String worldname, Chunk chunk, EconomyPlayer ecoPlayer);
+	public void performTownWorldLocationCheck(EconomyPlayer ecoPlayer);
 
 	/**
 	 * Returns the town name list.
@@ -100,8 +92,6 @@ public interface TownworldManager {
 
 	/**
 	 * Performs the townworld location check for all online players.
-	 * 
-	 * @throws GeneralEconomyException
 	 */
-	public void performTownworldLocationCheckAllPlayers() throws GeneralEconomyException;
+	public void performTownworldLocationCheckAllPlayers();
 }

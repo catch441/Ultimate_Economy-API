@@ -3,9 +3,6 @@ package org.ue.shopsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.townsystem.logic.TownSystemException;
 
 public interface RentshopManager {
 
@@ -26,9 +23,9 @@ public interface RentshopManager {
 	 * 
 	 * @param id
 	 * @return RentShop
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public Rentshop getRentShopById(String id) throws GeneralEconomyException;
+	public Rentshop getRentShopById(String id) throws ShopsystemException;
 
 	/**
 	 * This method returns a rentshop by a unique name.
@@ -39,9 +36,9 @@ public interface RentshopManager {
 	 * 
 	 * @param name
 	 * @return RentShop
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public Rentshop getRentShopByUniqueName(String name) throws GeneralEconomyException;
+	public Rentshop getRentShopByUniqueName(String name) throws ShopsystemException;
 
 	/**
 	 * This method returns a list of rentshop names. name = name_owner || RentShop#
@@ -65,11 +62,9 @@ public interface RentshopManager {
 	 * @param size
 	 * @param rentalFee
 	 * @return rentshop
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
+	 * @throws ShopsystemException
 	 */
-	public Rentshop createRentShop(Location spawnLocation, int size, double rentalFee)
-			throws GeneralEconomyException, EconomyPlayerException;
+	public Rentshop createRentShop(Location spawnLocation, int size, double rentalFee) throws ShopsystemException;
 
 	/**
 	 * This method should be used to delete a rentshop.
@@ -86,7 +81,7 @@ public interface RentshopManager {
 	/**
 	 * This method loads all rentShops. EconomyPlayers have to be loaded first.
 	 * 
-	 * @throws TownSystemException
+	 * @throws TownsystemException
 	 */
 	public void loadAllRentShops();
 }

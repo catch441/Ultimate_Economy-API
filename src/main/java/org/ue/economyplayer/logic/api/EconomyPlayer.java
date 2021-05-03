@@ -7,8 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.ue.bank.logic.api.BankAccount;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
+import org.ue.bank.logic.api.BankException;
 import org.ue.jobsystem.logic.api.Job;
 
 public interface EconomyPlayer {
@@ -73,40 +72,39 @@ public interface EconomyPlayer {
 	 * @param amount
 	 * @param sendMessage when true a message is send to the receiver and this
 	 *                    player
-	 * @throws GeneralEconomyException
 	 * @throws EconomyPlayerException
+	 * @throws BankException
 	 */
 	public void payToOtherPlayer(EconomyPlayer reciever, double amount, boolean sendMessage)
-			throws GeneralEconomyException, EconomyPlayerException;
+			throws BankException, EconomyPlayerException;
 
 	/**
 	 * Increase the bank amount of a player.
 	 * 
 	 * @param amount
 	 * @param sendMessage when true then a message is send to the player
-	 * @throws GeneralEconomyException
+	 * @throws BankException
 	 */
-	public void increasePlayerAmount(double amount, boolean sendMessage) throws GeneralEconomyException;
+	public void increasePlayerAmount(double amount, boolean sendMessage) throws BankException;
 
 	/**
 	 * Decrease the bank amount of this player.
 	 * 
 	 * @param amount
 	 * @param personal only for player exception, if player has not enough money
-	 * @throws GeneralEconomyException
+	 * @throws BankException
 	 * @throws EconomyPlayerException
 	 */
-	public void decreasePlayerAmount(double amount, boolean personal)
-			throws GeneralEconomyException, EconomyPlayerException;
+	public void decreasePlayerAmount(double amount, boolean personal) throws BankException, EconomyPlayerException;
 
 	/**
 	 * Returns true if the player has at minimum 'amount' on his bank account.
 	 * 
 	 * @param amount
 	 * @return boolean
-	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public boolean hasEnoughtMoney(double amount) throws GeneralEconomyException;
+	public boolean hasEnoughtMoney(double amount) throws EconomyPlayerException;
 
 	/**
 	 * Get the bank account of this player.
@@ -120,9 +118,9 @@ public interface EconomyPlayer {
 	 * 
 	 * @param homeName
 	 * @return Location
-	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public Location getHome(String homeName) throws GeneralEconomyException;
+	public Location getHome(String homeName) throws EconomyPlayerException;
 
 	/**
 	 * This method adds a home location to this player.
@@ -130,20 +128,18 @@ public interface EconomyPlayer {
 	 * @param homeName
 	 * @param location
 	 * @param sendMessage when true then a message is send to the player
-	 * @throws GeneralEconomyException
 	 * @throws EconomyPlayerException
 	 */
-	public void addHome(String homeName, Location location, boolean sendMessage)
-			throws GeneralEconomyException, EconomyPlayerException;
+	public void addHome(String homeName, Location location, boolean sendMessage) throws EconomyPlayerException;
 
 	/**
 	 * This method removes a home location from this player.
 	 * 
 	 * @param homeName
 	 * @param sendMessage when true then a message is send to the player
-	 * @throws GeneralEconomyException
+	 * @throws EconomyPlayerException
 	 */
-	public void removeHome(String homeName, boolean sendMessage) throws GeneralEconomyException;
+	public void removeHome(String homeName, boolean sendMessage) throws EconomyPlayerException;
 
 	/**
 	 * This method returns the list of homes as string list.

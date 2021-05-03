@@ -61,13 +61,6 @@ public interface ShopItem {
 	public void setBuyPrice(double buyPrice);
 	
 	/**
-	 * Returns the unique item hash.
-	 * 
-	 * @return item hash
-	 */
-	public int getItemHash();
-	
-	/**
 	 * Returns the item stock.
 	 * 
 	 * @return stock
