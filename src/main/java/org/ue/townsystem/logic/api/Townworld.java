@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.ue.bank.logic.api.BankException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.townsystem.logic.TownSystemException;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
 public interface Townworld {
 
@@ -25,33 +24,31 @@ public interface Townworld {
 	 * @param townName
 	 * @param location
 	 * @param player
-	 * @throws GeneralEconomyException
+	 * @throws TownsystemException
+	 * @throws BankException
 	 * @throws EconomyPlayerException
-	 * @throws TownSystemException
 	 */
 	public void foundTown(String townName, Location location, EconomyPlayer player)
-			throws GeneralEconomyException, EconomyPlayerException, TownSystemException;
+			throws TownsystemException, EconomyPlayerException, BankException;
 
 	/**
 	 * Dissolves a entire town. The Chunks are not resettet.
 	 * 
 	 * @param ecoPlayer
 	 * @param town
-	 * @throws GeneralEconomyException
+	 * @throws TownsystemException
 	 * @throws EconomyPlayerException
-	 * @throws TownSystemException
 	 */
-	public void dissolveTown(EconomyPlayer ecoPlayer, Town town)
-			throws GeneralEconomyException, TownSystemException, EconomyPlayerException;
+	public void dissolveTown(EconomyPlayer ecoPlayer, Town town) throws TownsystemException, EconomyPlayerException;
 
 	/**
 	 * Returns town by chunk.
 	 * 
 	 * @param chunk
 	 * @return Town
-	 * @throws TownSystemException
+	 * @throws TownsystemException
 	 */
-	public Town getTownByChunk(Chunk chunk) throws TownSystemException;
+	public Town getTownByChunk(Chunk chunk) throws TownsystemException;
 
 	/**
 	 * Returns the Town World name.
@@ -65,9 +62,9 @@ public interface Townworld {
 	 * 
 	 * @param townName
 	 * @return Town
-	 * @throws GeneralEconomyException
+	 * @throws TownsystemException
 	 */
-	public Town getTownByName(String townName) throws GeneralEconomyException;
+	public Town getTownByName(String townName) throws TownsystemException;
 
 	/**
 	 * Returns a list of all townnames in this townworld.
@@ -80,9 +77,9 @@ public interface Townworld {
 	 * Set the FoundationPrice for a town in this townworld.
 	 * 
 	 * @param foundationPrice
-	 * @throws GeneralEconomyException 
+	 * @throws TownsystemException
 	 */
-	public void setFoundationPrice(double foundationPrice) throws GeneralEconomyException;
+	public void setFoundationPrice(double foundationPrice) throws TownsystemException;
 
 	/**
 	 * Returns the founding price of this townworld.
@@ -95,9 +92,9 @@ public interface Townworld {
 	 * Set the ExpandPrice for a town in this townworld.
 	 * 
 	 * @param expandPrice
-	 * @throws GeneralEconomyException 
+	 * @throws TownsystemException
 	 */
-	public void setExpandPrice(double expandPrice) throws GeneralEconomyException;
+	public void setExpandPrice(double expandPrice) throws TownsystemException;
 
 	/**
 	 * Returns the expand price for a town in this townworld.
@@ -121,12 +118,7 @@ public interface Townworld {
 	public boolean isChunkFree(Chunk chunk);
 
 	/**
-	 * Delets all save files and towns.
-	 * <p>
-	 * 
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
-	 * @throws TownSystemException
+	 * Deletes all save files and towns.
 	 */
-	public void delete() throws TownSystemException, EconomyPlayerException, GeneralEconomyException;
+	public void delete();
 }

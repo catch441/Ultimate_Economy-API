@@ -1,15 +1,15 @@
 package org.ue.bank.logic.api;
 
-import org.ue.general.GeneralEconomyException;
+import org.ue.common.logic.api.GeneralValidationHandler;
 
-public interface BankValidationHandler {
+public interface BankValidationHandler extends GeneralValidationHandler<BankException> {
 
 	/**
 	 * Checks for bank account has enough money to reduce.
 	 * 
 	 * @param bankAmount
 	 * @param redAmount
-	 * @throws GeneralEconomyException
+	 * @throws BankException
 	 */
-	public void checkForHasEnoughMoney(double bankAmount, double redAmount) throws GeneralEconomyException;
+	public void checkForHasEnoughMoney(double bankAmount, double redAmount) throws BankException;
 }

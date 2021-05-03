@@ -2,8 +2,6 @@ package org.ue.config.logic.api;
 
 import java.util.Locale;
 
-import org.ue.general.GeneralEconomyException;
-
 public interface ConfigManager {
 
 	/**
@@ -29,9 +27,9 @@ public interface ConfigManager {
 	 * Sets the start amount value.
 	 * 
 	 * @param amount
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setStartAmount(double amount) throws GeneralEconomyException;
+	public void setStartAmount(double amount) throws ConfigException;
 
 	/**
 	 * Returns the start amount.
@@ -72,9 +70,9 @@ public interface ConfigManager {
 	 * This method sets the maxRentedDays value.
 	 * 
 	 * @param days
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setMaxRentedDays(int days) throws GeneralEconomyException;
+	public void setMaxRentedDays(int days) throws ConfigException;
 
 	/**
 	 * Returns the max rented days.
@@ -87,9 +85,9 @@ public interface ConfigManager {
 	 * This method sets the maxPlayershops per player value.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setMaxPlayershops(int value) throws GeneralEconomyException;
+	public void setMaxPlayershops(int value) throws ConfigException;
 
 	/**
 	 * Returns the maxPlayershops per player value.
@@ -102,9 +100,9 @@ public interface ConfigManager {
 	 * This method sets the maxHomes value.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setMaxHomes(int value) throws GeneralEconomyException;
+	public void setMaxHomes(int value) throws ConfigException;
 
 	/**
 	 * Returns the max homes configuration.
@@ -117,9 +115,9 @@ public interface ConfigManager {
 	 * This method sets the maxJobs value.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setMaxJobs(int value) throws GeneralEconomyException;
+	public void setMaxJobs(int value) throws ConfigException;
 
 	/**
 	 * Returns the max jobs configuration.
@@ -132,9 +130,9 @@ public interface ConfigManager {
 	 * This method sets the maxJoinedTowns value.
 	 * 
 	 * @param value
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException 
 	 */
-	public void setMaxJoinedTowns(int value) throws GeneralEconomyException;
+	public void setMaxJoinedTowns(int value) throws ConfigException;
 
 	/**
 	 * Returns the max joined towns configuration.
@@ -205,7 +203,7 @@ public interface ConfigManager {
 	 * 
 	 * @param language
 	 * @param country
-	 * @throws GeneralEconomyException
+	 * @throws ConfigException
 	 */
-	public void setLocale(String language, String country) throws GeneralEconomyException;
+	public void setLocale(String language, String country) throws ConfigException;
 }

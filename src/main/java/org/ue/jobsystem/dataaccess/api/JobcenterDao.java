@@ -2,18 +2,11 @@ package org.ue.jobsystem.dataaccess.api;
 
 import java.util.List;
 
-import org.bukkit.Location;
 import org.bukkit.Material;
+import org.ue.common.dataaccess.api.EconomyVillagerDao;
 import org.ue.jobsystem.logic.api.Job;
 
-public interface JobcenterDao {
-
-	/**
-	 * Saves the jobcenter size.
-	 * 
-	 * @param size
-	 */
-	public void saveJobcenterSize(int size);
+public interface JobcenterDao extends EconomyVillagerDao {
 
 	/**
 	 * Saves the jobcenter name.
@@ -21,13 +14,6 @@ public interface JobcenterDao {
 	 * @param name
 	 */
 	public void saveJobcenterName(String name);
-
-	/**
-	 * Saves the location of a jobcenter.
-	 * 
-	 * @param location
-	 */
-	public void saveJobcenterLocation(Location location);
 
 	/**
 	 * Saves a job name list.
@@ -50,20 +36,6 @@ public interface JobcenterDao {
 	 * Deletes the savefile.
 	 */
 	public void deleteSavefile();
-
-	/**
-	 * Loads the jobcenter size.
-	 * 
-	 * @return size as integer
-	 */
-	public int loadJobcenterSize();
-
-	/**
-	 * Loads the location of a jobcenter.
-	 * 
-	 * @return location as Location
-	 */
-	public Location loadJobcenterLocation();
 
 	/**
 	 * Loads the slot of a job inside a jobcenter.

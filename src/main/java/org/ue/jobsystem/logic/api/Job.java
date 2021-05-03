@@ -3,7 +3,6 @@ package org.ue.jobsystem.logic.api;
 import java.util.Map;
 
 import org.bukkit.entity.EntityType;
-import org.ue.general.GeneralEconomyException;
 
 public interface Job {
 
@@ -19,51 +18,51 @@ public interface Job {
 	 * 
 	 * @param breedable
 	 * @return price
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public double getBreedPrice(EntityType breedable) throws GeneralEconomyException;
+	public double getBreedPrice(EntityType breedable) throws JobsystemException;
 
 	/**
 	 * Removes a breedable entity from the job.
 	 * 
 	 * @param breedable
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void deleteBreedable(EntityType breedable) throws GeneralEconomyException;
+	public void deleteBreedable(EntityType breedable) throws JobsystemException;
 
 	/**
 	 * Adds a breedable entity to the job.
 	 * 
 	 * @param breedable
 	 * @param price
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void addBreedable(EntityType breedable, double price) throws GeneralEconomyException;
+	public void addBreedable(EntityType breedable, double price) throws JobsystemException;
 
 	/**
 	 * This method removes a mob from a job.
 	 * 
 	 * @param entity
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void deleteMob(String entity) throws GeneralEconomyException;
+	public void deleteMob(String entity) throws JobsystemException;
 
 	/**
 	 * This method removes a block from a job.
 	 * 
 	 * @param material
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void deleteBlock(String material) throws GeneralEconomyException;
+	public void deleteBlock(String material) throws JobsystemException;
 
 	/**
 	 * This method removes a loottype from this job. The loottype is for a
 	 * fisherJob. It should be "treasure", "junk" or "fish".
 	 * 
 	 * @param lootType
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void removeFisherLootType(String lootType) throws GeneralEconomyException;
+	public void removeFisherLootType(String lootType) throws JobsystemException;
 
 	/**
 	 * This method adds a loottype with a price to this job. The loottype is for a
@@ -71,27 +70,27 @@ public interface Job {
 	 * 
 	 * @param lootType
 	 * @param price
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void addFisherLootType(String lootType, double price) throws GeneralEconomyException;
+	public void addFisherLootType(String lootType, double price) throws JobsystemException;
 
 	/**
 	 * This method adds a mob to a job.
 	 * 
 	 * @param entity
 	 * @param price
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void addMob(String entity, double price) throws GeneralEconomyException;
+	public void addMob(String entity, double price) throws JobsystemException;
 
 	/**
 	 * This method adds a block to a job.
 	 * 
 	 * @param material
 	 * @param price
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public void addBlock(String material, double price) throws GeneralEconomyException;
+	public void addBlock(String material, double price) throws JobsystemException;
 
 	/**
 	 * This method deletes the job saveFile.
@@ -110,27 +109,27 @@ public interface Job {
 	 * 
 	 * @param material
 	 * @return double
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public double getBlockPrice(String material) throws GeneralEconomyException;
+	public double getBlockPrice(String material) throws JobsystemException;
 
 	/**
 	 * This method returns the price of a fisher lootType.
 	 * 
 	 * @param lootType
 	 * @return double
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public double getFisherPrice(String lootType) throws GeneralEconomyException;
+	public double getFisherPrice(String lootType) throws JobsystemException;
 
 	/**
 	 * This method returns the price for killing a entity.
 	 * 
 	 * @param entityName
 	 * @return double
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException
 	 */
-	public double getKillPrice(String entityName) throws GeneralEconomyException;
+	public double getKillPrice(String entityName) throws JobsystemException;
 
 	/**
 	 * This method returns the fisherList.

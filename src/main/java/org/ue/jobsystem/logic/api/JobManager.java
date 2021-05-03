@@ -2,9 +2,6 @@ package org.ue.jobsystem.logic.api;
 
 import java.util.List;
 
-import org.ue.general.GeneralEconomyException;
-import org.ue.jobsystem.logic.JobSystemException;
-
 public interface JobManager {
 
 	/**
@@ -26,16 +23,14 @@ public interface JobManager {
 	 * 
 	 * @param jobName
 	 * @return Job
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public Job getJobByName(String jobName) throws GeneralEconomyException;
+	public Job getJobByName(String jobName) throws JobsystemException;
 	
 	/**
 	 * This method deletes a job.
 	 * 
 	 * @param job
-	 * @throws JobSystemException
-	 * @throws GeneralEconomyException
 	 */
 	public void deleteJob(Job job);
 	
@@ -43,9 +38,9 @@ public interface JobManager {
 	 * This method should be used to create a new Job.
 	 * 
 	 * @param jobName
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public void createJob(String jobName) throws GeneralEconomyException;
+	public void createJob(String jobName) throws JobsystemException;
 	
 	/**
 	 * This method loads all Jobs from the save files.

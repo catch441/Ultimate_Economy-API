@@ -3,8 +3,6 @@ package org.ue.jobsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.general.GeneralEconomyException;
-import org.ue.jobsystem.logic.JobSystemException;
 
 public interface JobcenterManager {
 
@@ -13,9 +11,9 @@ public interface JobcenterManager {
 	 * 
 	 * @param name
 	 * @return JobCenter
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public Jobcenter getJobcenterByName(String name) throws GeneralEconomyException;
+	public Jobcenter getJobcenterByName(String name) throws JobsystemException;
 	
 	/**
 	 * This method returns a namelist of all jobcenters.
@@ -35,9 +33,9 @@ public interface JobcenterManager {
 	 * This method should me used to delete a jobcenter.
 	 * 
 	 * @param jobcenter
-	 * @throws JobSystemException
+	 * @throws JobsystemException 
 	 */
-	public void deleteJobcenter(Jobcenter jobcenter) throws JobSystemException;
+	public void deleteJobcenter(Jobcenter jobcenter) throws JobsystemException;
 	
 	/**
 	 * This method should be used to create a new jobcenter.
@@ -45,11 +43,9 @@ public interface JobcenterManager {
 	 * @param name
 	 * @param spawnLocation
 	 * @param size
-	 * @throws JobSystemException
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public void createJobcenter(String name, Location spawnLocation, int size)
-			throws JobSystemException, GeneralEconomyException;
+	public void createJobcenter(String name, Location spawnLocation, int size) throws JobsystemException;
 	
 	/**
 	 * This method loads all jobcenters from the save files. !!!

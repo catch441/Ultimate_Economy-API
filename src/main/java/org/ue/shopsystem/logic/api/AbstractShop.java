@@ -2,44 +2,23 @@ package org.ue.shopsystem.logic.api;
 
 import java.util.List;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
-import org.bukkit.entity.Villager.Profession;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.dataaccess.api.ShopDao;
-import org.ue.shopsystem.logic.ShopSystemException;
-import org.ue.townsystem.logic.TownSystemException;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.bank.logic.api.BankException;
+import org.ue.common.logic.api.EconomyVillager;
 
-public abstract interface AbstractShop {
+public abstract interface AbstractShop extends EconomyVillager<ShopsystemException> {
 
 	/**
-	 * Setup a new shop. Only Adminshop.
+	 * Setup an existing shop.
 	 * 
-	 * @param name
 	 * @param shopId
-	 * @param spawnLocation
-	 * @param size
+	 * @throws EconomyPlayerException if the shop owner is not an known economy
+	 *                                player
 	 */
-	public void setupNew(String name, String shopId, Location spawnLocation, int size);
-
-	/**
-	 * Setup an existing shop. If name != null then use old loading otherwise use
-	 * new loading. If you choose old loading, the savefile gets converted to the
-	 * new save system.
-	 * 
-	 * @param name
-	 * @param shopId
-	 * @throws TownSystemException
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
-	 */
-	public void setupExisting(String name, String shopId)
-			throws TownSystemException, ShopSystemException, GeneralEconomyException;
+	public void setupExisting(String shopId) throws EconomyPlayerException;
 
 	/**
 	 * Returns the name of this shop.
@@ -56,52 +35,29 @@ public abstract interface AbstractShop {
 	public String getShopId();
 
 	/**
-	 * Returns the shop inventory.
-	 * 
-	 * @return shopInventory
-	 */
-	public Inventory getShopInventory();
-
-	/**
-	 * Returns the location of the shop.
-	 * 
-	 * @return location
-	 */
-	public Location getShopLocation();
-
-	/**
-	 * Returns the savefile handler of this shop.
-	 * 
-	 * @return ShopSavefileManager
-	 */
-	public ShopDao getShopDao();
-
-	/**
 	 * Returns the itemslist of this shop.
 	 * 
 	 * @return list of ShopItems
-	 * @throws ShopSystemException
 	 */
-	public List<ShopItem> getItemList() throws ShopSystemException;
+	public List<ShopItem> getItemList();
 
 	/**
 	 * Returns a itemstack by a given slot.
 	 * 
 	 * @param slot
 	 * @return itemstack
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public ShopItem getShopItem(int slot) throws GeneralEconomyException, ShopSystemException;
+	public ShopItem getShopItem(int slot) throws ShopsystemException;
 
 	/**
 	 * Returns a shop item.
 	 * 
 	 * @param stack
 	 * @return ShopItem
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
 	 */
-	public ShopItem getShopItem(ItemStack stack) throws ShopSystemException;
+	public ShopItem getShopItem(ItemStack stack) throws ShopsystemException;
 
 	/**
 	 * This method adds a item to this shop.
@@ -110,36 +66,30 @@ public abstract interface AbstractShop {
 	 * @param sellPrice
 	 * @param buyPrice
 	 * @param itemStack
-	 * @throws ShopSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
 	public void addShopItem(int slot, double sellPrice, double buyPrice, ItemStack itemStack)
-			throws ShopSystemException, EconomyPlayerException, GeneralEconomyException;
+			throws ShopsystemException;
 
 	/**
 	 * This method removes a item from this shop.
 	 * 
 	 * @param slot intern
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public void removeShopItem(int slot) throws ShopSystemException, GeneralEconomyException;
+	public void removeShopItem(int slot) throws ShopsystemException;
 
 	/**
 	 * This method edits an existing item in this shop.
 	 * 
 	 * @param slot      intern
-	 * @param amount
-	 * @param sellPrice
-	 * @param buyPrice
+	 * @param amount    null, if not changed
+	 * @param sellPrice null, if not changed
+	 * @param buyPrice  null, if not changed
 	 * @return String
-	 * @throws ShopSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public String editShopItem(int slot, String amount, String sellPrice, String buyPrice)
-			throws ShopSystemException, EconomyPlayerException, GeneralEconomyException;
+	public String editShopItem(int slot, Integer amount, Double sellPrice, Double buyPrice) throws ShopsystemException;
 
 	/**
 	 * Buy the shop item from a specific slot for the given economy player. The
@@ -148,12 +98,12 @@ public abstract interface AbstractShop {
 	 * @param slot
 	 * @param ecoPlayer
 	 * @param sendMessage
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 * @throws EconomyPlayerException
-	 * @throws ShopSystemException
+	 * @throws BankException
 	 */
 	public void buyShopItem(int slot, EconomyPlayer ecoPlayer, boolean sendMessage)
-			throws GeneralEconomyException, EconomyPlayerException, ShopSystemException;
+			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
 	 * Sells a shopitem to this shop. Make sure, that the player has the amount of
@@ -163,56 +113,23 @@ public abstract interface AbstractShop {
 	 * @param amount
 	 * @param ecoPlayer
 	 * @param sendMessage
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
+	 * @throws BankException          when the calculated sellprice is negative
+	 *                                (shopItem.getSellPrice() /
+	 *                                shopItem.getAmount() * amount;)
 	 * @throws EconomyPlayerException
 	 */
 	public void sellShopItem(int slot, int amount, EconomyPlayer ecoPlayer, boolean sendMessage)
-			throws GeneralEconomyException, ShopSystemException, EconomyPlayerException;
-
-	/**
-	 * Change the profession of a shopvillager.
-	 * 
-	 * @param profession
-	 */
-	public void changeProfession(Profession profession);
+			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
 	 * Change the name of a shop. Name gets checked, if a shop with this name
 	 * already exists.
 	 * 
 	 * @param name Forbidden char is "_"
-	 * @throws ShopSystemException     thrown, when a shop with this name already
-	 *                                 exists or the name contains "_"
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public abstract void changeShopName(String name) throws ShopSystemException, GeneralEconomyException;
-
-	/**
-	 * Change the size of the shop. Size gets validated. With only the info slot in
-	 * the shop. Have to be overridden, if you have more then one reserved shot in
-	 * your shop.
-	 * 
-	 * @param newSize
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
-	 */
-	public void changeShopSize(int newSize) throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
-
-	/**
-	 * This method moves a shop to a new location.
-	 * 
-	 * @param location
-	 * @throws TownSystemException
-	 * @throws EconomyPlayerException
-	 */
-	public void moveShop(Location location) throws TownSystemException, EconomyPlayerException;
-
-	/**
-	 * Despawns the shop villager.
-	 */
-	public void despawnVillager();
+	public abstract void changeShopName(String name) throws ShopsystemException;
 
 	/**
 	 * Despawns the shop villager.
@@ -220,22 +137,13 @@ public abstract interface AbstractShop {
 	public void deleteShop();
 
 	/**
-	 * Opens the shop inventory.
-	 * 
-	 * @param player
-	 * @throws ShopSystemException
-	 */
-	public void openShopInventory(Player player) throws ShopSystemException;
-
-	/**
 	 * Opens the slot editor GUI.
 	 * 
 	 * @param player
 	 * @param slot   internal
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public void openSlotEditor(Player player, int slot) throws ShopSystemException, GeneralEconomyException;
+	public void openSlotEditor(Player player, int slot) throws ShopsystemException;
 
 	/**
 	 * Opens the editor GUI with occupied and free slots The 2 last slots are not
@@ -243,21 +151,7 @@ public abstract interface AbstractShop {
 	 * method.
 	 * 
 	 * @param player
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException rentshop: if the shop is not rented
 	 */
-	public void openEditor(Player player) throws ShopSystemException;
-
-	/**
-	 * Returns the size of the shop.
-	 * 
-	 * @return size
-	 */
-	public int getSize();
-
-	/**
-	 * Returns the shop villager.
-	 * 
-	 * @return shop villager
-	 */
-	public Villager getShopVillager();
+	public void openEditor(Player player) throws ShopsystemException;
 }

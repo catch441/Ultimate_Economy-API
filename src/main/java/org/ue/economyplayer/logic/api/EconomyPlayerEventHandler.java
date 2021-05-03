@@ -1,8 +1,7 @@
 package org.ue.economyplayer.logic.api;
 
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
+import org.ue.bank.logic.api.BankException;
 
 public interface EconomyPlayerEventHandler {
 
@@ -11,7 +10,7 @@ public interface EconomyPlayerEventHandler {
 	 * 
 	 * @param event
 	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException 
+	 * @throws BankException
 	 */
-	public void handleJoin(PlayerJoinEvent event) throws EconomyPlayerException, GeneralEconomyException;
+	public void handleJoin(PlayerJoinEvent event) throws EconomyPlayerException, BankException;
 }

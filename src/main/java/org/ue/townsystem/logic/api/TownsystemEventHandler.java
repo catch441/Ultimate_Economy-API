@@ -45,8 +45,8 @@ public interface TownsystemEventHandler {
 	public void handleOpenPlotSaleInventory(PlayerInteractEntityEvent event);
 	
 	/**
-	 * Handles the townmanager and plot seller villager inventory click. TODO
-	 * [UE-76]
+	 * Handles the townmanager and plot seller villager inventory click. TODO [UE-76]
+	 * 
 	 * 
 	 * @param event
 	 */

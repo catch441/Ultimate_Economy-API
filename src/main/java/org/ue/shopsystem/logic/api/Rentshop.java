@@ -2,10 +2,9 @@ package org.ue.shopsystem.logic.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.ue.bank.logic.api.BankException;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.shopsystem.logic.ShopSystemException;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
 public interface Rentshop extends Playershop {
 
@@ -36,40 +35,38 @@ public interface Rentshop extends Playershop {
 	/**
 	 * Resets the entire shop. Sets the shop back to the "rentable" state. Removes
 	 * all items from the shop.
-	 * 
-	 * @throws GeneralEconomyException
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException 
 	 * 
 	 */
-	public void resetShop() throws ShopSystemException, GeneralEconomyException;
+	public void resetShop() throws ShopsystemException;
 
 	/**
 	 * Change the rental fee of this shop. Does not affect a active rent.
 	 * 
 	 * @param fee
-	 * @throws GeneralEconomyException
+	 * @throws ShopsystemException
 	 */
-	public void changeRentalFee(double fee) throws GeneralEconomyException;
+	public void changeRentalFee(double fee) throws ShopsystemException;
 
 	/**
 	 * Rent this shop for a given player.
 	 * 
 	 * @param player
 	 * @param duration
-	 * @throws ShopSystemException
-	 * @throws GeneralEconomyException
-	 * @throws EconomyPlayerException
+	 * @throws ShopsystemException
+	 * @throws EconomyPlayerException if the player has not enough money
+	 * @throws BankException
 	 */
 	public void rentShop(EconomyPlayer player, int duration)
-			throws ShopSystemException, GeneralEconomyException, EconomyPlayerException;
+			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
 	 * Opens the rentshop GUI, if the shop is not rented.
 	 * 
 	 * @param player
-	 * @throws ShopSystemException
+	 * @throws ShopsystemException
 	 */
-	public void openRentGUI(Player player) throws ShopSystemException;
+	public void openRentGUI(Player player) throws ShopsystemException;
 
 	/**
 	 * Returns the rental fee amount.

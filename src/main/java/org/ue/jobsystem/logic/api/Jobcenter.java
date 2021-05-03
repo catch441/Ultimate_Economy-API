@@ -3,12 +3,9 @@ package org.ue.jobsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.ue.economyplayer.logic.EconomyPlayerException;
-import org.ue.general.GeneralEconomyException;
-import org.ue.jobsystem.logic.JobSystemException;
+import org.ue.common.logic.api.EconomyVillager;
 
-public interface Jobcenter {
+public interface Jobcenter extends EconomyVillager<JobsystemException> {
 
 	/**
 	 * Setup a new jobcenter.
@@ -32,27 +29,17 @@ public interface Jobcenter {
 	 * @param job
 	 * @param itemMaterial
 	 * @param slot
-	 * @throws JobSystemException
-	 * @throws EconomyPlayerException
-	 * @throws GeneralEconomyException
+	 * @throws JobsystemException 
 	 */
-	public void addJob(Job job, String itemMaterial, int slot)
-			throws JobSystemException, EconomyPlayerException, GeneralEconomyException;
+	public void addJob(Job job, String itemMaterial, int slot) throws JobsystemException;
 
 	/**
 	 * This method removes a job from this jobcenter.
 	 * 
 	 * @param job
-	 * @throws JobSystemException
+	 * @throws JobsystemException 
 	 */
-	public void removeJob(Job job) throws JobSystemException;
-
-	/**
-	 * This method moves a jobcenter villager to a other location.
-	 * 
-	 * @param location
-	 */
-	public void moveJobcenter(Location location);
+	public void removeJob(Job job) throws JobsystemException;
 
 	/**
 	 * This method returns the name of this jobcenter.
@@ -62,23 +49,11 @@ public interface Jobcenter {
 	public String getName();
 
 	/**
-	 * This method despawns the jobcenter villager.
-	 */
-	public void despawnVillager();
-
-	/**
 	 * This method returns a list of all jobs in this jobcenter.
 	 * 
 	 * @return List of jobs
 	 */
 	public List<Job> getJobList();
-
-	/**
-	 * This method opens the jobcenter inventory.
-	 * 
-	 * @param player
-	 */
-	public void openInv(Player player);
 
 	/**
 	 * This method returns true if this jobcenter contains this job.
@@ -92,11 +67,4 @@ public interface Jobcenter {
 	 * Deletes savefile and despawns villager.
 	 */
 	public void deleteJobcenter();
-
-	/**
-	 * Returns the location of the jobcenter villager.
-	 * 
-	 * @return location
-	 */
-	public Location getJobcenterLocation();
 }
