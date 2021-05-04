@@ -2,6 +2,7 @@ package org.ue.townsystem.logic.api;
 
 import java.util.List;
 
+import org.bukkit.Location;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 
 public interface TownworldManager {
@@ -77,11 +78,11 @@ public interface TownworldManager {
 	/**
 	 * Handles the townworld location check, if the player is online.
 	 * 
-	 * @param worldname
-	 * @param chunk
+	 * @param ecoPlayer
+	 * @param location if the location is different from the player
 	 * @param ecoPlayer
 	 */
-	public void performTownWorldLocationCheck(EconomyPlayer ecoPlayer);
+	public void performTownWorldLocationCheck(EconomyPlayer ecoPlayer, Location location);
 
 	/**
 	 * Returns the town name list.
