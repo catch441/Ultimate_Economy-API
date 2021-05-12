@@ -1,8 +1,8 @@
 package org.ue.config.logic.api;
 
-import org.ue.common.logic.api.GeneralValidationHandler;
+import org.ue.common.logic.api.GeneralValidator;
 
-public interface ConfigValidator extends GeneralValidationHandler<ConfigException> {
+public interface ConfigValidator extends GeneralValidator<ConfigException> {
 
 	/**
 	 * Check for supported language.

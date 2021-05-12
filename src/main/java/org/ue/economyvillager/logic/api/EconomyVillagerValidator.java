@@ -4,9 +4,9 @@ import java.util.Set;
 
 import org.bukkit.inventory.Inventory;
 import org.ue.common.logic.api.GeneralEconomyException;
-import org.ue.common.logic.api.GeneralValidationHandler;
+import org.ue.common.logic.api.GeneralValidator;
 
-public interface EconomyVillagerValidator<T extends GeneralEconomyException> extends GeneralValidationHandler<T> {
+public interface EconomyVillagerValidator<T extends GeneralEconomyException> extends GeneralValidator<T> {
 
 	/**
 	 * Check for resize is possible.
