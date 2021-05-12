@@ -2,8 +2,8 @@ package org.ue.shopsystem.dataaccess.api;
 
 import java.util.List;
 
-import org.ue.common.dataaccess.api.EconomyVillagerDao;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyvillager.dataaccess.api.EconomyVillagerDao;
 import org.ue.shopsystem.logic.api.ShopItem;
 
 public interface ShopDao extends EconomyVillagerDao {

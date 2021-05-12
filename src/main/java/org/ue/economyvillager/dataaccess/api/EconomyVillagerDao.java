@@ -1,4 +1,4 @@
-package org.ue.common.dataaccess.api;
+package org.ue.economyvillager.dataaccess.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Villager.Profession;

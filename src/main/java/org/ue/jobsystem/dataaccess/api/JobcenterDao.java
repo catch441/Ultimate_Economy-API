@@ -3,7 +3,7 @@ package org.ue.jobsystem.dataaccess.api;
 import java.util.List;
 
 import org.bukkit.Material;
-import org.ue.common.dataaccess.api.EconomyVillagerDao;
+import org.ue.economyvillager.dataaccess.api.EconomyVillagerDao;
 import org.ue.jobsystem.logic.api.Job;
 
 public interface JobcenterDao extends EconomyVillagerDao {
