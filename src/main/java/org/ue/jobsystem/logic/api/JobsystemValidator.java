@@ -2,9 +2,9 @@ package org.ue.jobsystem.logic.api;
 
 import java.util.List;
 
-import org.ue.common.logic.api.EconomyVillagerValidationHandler;
+import org.ue.economyvillager.logic.api.EconomyVillagerValidator;
 
-public interface JobsystemValidationHandler extends EconomyVillagerValidationHandler<JobsystemException> {
+public interface JobsystemValidator extends EconomyVillagerValidator<JobsystemException> {
 
 	/**
 	 * Check for the job does not exists in the jobcenter.

@@ -1,4 +1,4 @@
-package org.ue.common.logic.api;
+package org.ue.economyvillager.logic.api;
 
 public enum EconomyVillagerType {
 

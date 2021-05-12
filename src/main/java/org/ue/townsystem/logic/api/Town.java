@@ -5,9 +5,9 @@ import java.util.List;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.ue.bank.logic.api.BankException;
-import org.ue.common.logic.api.EconomyVillager;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 
 public interface Town extends EconomyVillager<TownsystemException> {
 

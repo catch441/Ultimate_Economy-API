@@ -1,10 +1,12 @@
-package org.ue.common.logic.api;
+package org.ue.economyvillager.logic.api;
 
 import java.util.Set;
 
 import org.bukkit.inventory.Inventory;
+import org.ue.common.logic.api.GeneralEconomyException;
+import org.ue.common.logic.api.GeneralValidationHandler;
 
-public interface EconomyVillagerValidationHandler<T extends GeneralEconomyException> extends GeneralValidationHandler<T> {
+public interface EconomyVillagerValidator<T extends GeneralEconomyException> extends GeneralValidationHandler<T> {
 
 	/**
 	 * Check for resize is possible.

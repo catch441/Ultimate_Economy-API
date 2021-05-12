@@ -6,7 +6,7 @@ import org.ue.bank.logic.api.BankAccount;
 import org.ue.common.logic.api.GeneralValidationHandler;
 import org.ue.jobsystem.logic.api.Job;
 
-public interface EconomyPlayerValidationHandler extends GeneralValidationHandler<EconomyPlayerException> {
+public interface EconomyPlayerValidator extends GeneralValidationHandler<EconomyPlayerException> {
 
 	/**
 	 * Check for has enough money.

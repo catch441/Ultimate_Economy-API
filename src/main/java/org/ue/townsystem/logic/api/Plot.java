@@ -3,8 +3,8 @@ package org.ue.townsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.common.logic.api.EconomyVillager;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 
 public interface Plot extends EconomyVillager<TownsystemException> {
 

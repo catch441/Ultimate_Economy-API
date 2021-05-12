@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 import org.ue.bank.logic.api.BankException;
-import org.ue.common.logic.api.EconomyVillager;
 
 public abstract interface AbstractShop extends EconomyVillager<ShopsystemException> {
 

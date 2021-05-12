@@ -1,10 +1,11 @@
-package org.ue.common.logic.api;
+package org.ue.economyvillager.logic.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Villager.Type;
 import org.bukkit.inventory.Inventory;
+import org.ue.common.logic.api.GeneralEconomyException;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
 public interface EconomyVillager<T extends GeneralEconomyException> extends EconomyVillagerCustomizeHandler<T> {

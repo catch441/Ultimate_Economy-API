@@ -1,7 +1,8 @@
-package org.ue.common.logic.api;
+package org.ue.economyvillager.logic.api;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.ue.common.logic.api.GeneralEconomyException;
 
 public interface EconomyVillagerCustomizeHandler<T extends GeneralEconomyException> {
 
