@@ -6,10 +6,8 @@ public enum PlayershopCommandEnum {
 	DELETE,
 	DELETEOTHER,
 	RENAME,
-	RESIZE,
 	MOVE,
 	CHANGEOWNER,
-	CHANGEPROFESSION,
 	EDITSHOP,
 	UNKNOWN;
 

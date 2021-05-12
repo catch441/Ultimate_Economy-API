@@ -2,6 +2,7 @@ package org.ue.common.dataaccess.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Villager.Profession;
+import org.bukkit.entity.Villager.Type;
 
 public interface EconomyVillagerDao {
 
@@ -12,6 +13,14 @@ public interface EconomyVillagerDao {
 	 * @param location
 	 */
 	public void saveLocation(String prefix, Location location);
+	
+	/**
+	 * Saves the villager biome type.
+	 * 
+	 * @param prefix a prefix for the save path
+	 * @param biomeType
+	 */
+	public void saveBiomeType(String prefix, Type biomeType);
 
 	/**
 	 * Saves the villager profession.
@@ -52,6 +61,14 @@ public interface EconomyVillagerDao {
 	 * @return profession
 	 */
 	public Profession loadProfession(String prefix);
+	
+	/**
+	 * Loads the villager biome type.
+	 * 
+	 * @param prefix a prefix for the load path
+	 * @return biome type
+	 */
+	public Type loadBiomeType(String prefix);
 
 	/**
 	 * Loads the villager location. Returns null, if no location was saved.

@@ -3,10 +3,11 @@ package org.ue.common.logic.api;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager.Profession;
+import org.bukkit.entity.Villager.Type;
 import org.bukkit.inventory.Inventory;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
-public interface EconomyVillager<T extends GeneralEconomyException> {
+public interface EconomyVillager<T extends GeneralEconomyException> extends EconomyVillagerCustomizeHandler<T> {
 
 	/**
 	 * Change the profession of the villager.
@@ -14,6 +15,13 @@ public interface EconomyVillager<T extends GeneralEconomyException> {
 	 * @param professtion
 	 */
 	public void changeProfession(Profession professtion);
+
+	/**
+	 * Change the biome type of the villager.
+	 * 
+	 * @param biomeType
+	 */
+	public void changeBiomeType(Type biomeType);
 
 	/**
 	 * Change the location of the villager.

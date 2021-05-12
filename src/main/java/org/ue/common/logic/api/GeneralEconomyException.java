@@ -25,7 +25,7 @@ public abstract class GeneralEconomyException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		return messageWrapper.getErrorString(key.getValue(), params);
+		return messageWrapper.getErrorString(key, params);
 	}
 	
 	/**
