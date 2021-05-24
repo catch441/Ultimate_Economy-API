@@ -4,7 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Villager.Type;
 
-public interface EconomyVillagerDao {
+public abstract interface EconomyVillagerDao {
 
 	/**
 	 * Save the villager location.

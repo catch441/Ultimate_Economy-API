@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import org.ue.common.logic.api.GeneralEconomyException;
 import org.ue.common.logic.api.GeneralValidator;
 
-public interface EconomyVillagerValidator<T extends GeneralEconomyException> extends GeneralValidator<T> {
+public abstract interface EconomyVillagerValidator<T extends GeneralEconomyException> extends GeneralValidator<T> {
 
 	/**
 	 * Check for resize is possible.

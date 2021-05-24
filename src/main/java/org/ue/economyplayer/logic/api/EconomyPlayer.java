@@ -13,6 +13,22 @@ import org.ue.jobsystem.logic.api.Job;
 public interface EconomyPlayer {
 
 	/**
+	 * Setup a new economy player.
+	 * 
+	 * @param player
+	 * @param name
+	 */
+	public void setupNew(Player player, String name);
+
+	/**
+	 * Setup a existing economy player.
+	 * 
+	 * @param player
+	 * @param name
+	 */
+	public void setupExisting(Player player, String name);
+
+	/**
 	 * Returns the player. Returns null, if the player is not online.
 	 * 
 	 * @return Player

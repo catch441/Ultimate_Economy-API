@@ -19,7 +19,14 @@ public enum SkullTextureEnum {
 	FOUR("http://textures.minecraft.net/texture/d198d56216156114265973c258f57fc79d246bb65e3c77bbe8312ee35db6"),
 	FIVE("http://textures.minecraft.net/texture/7fb91bb97749d6a6eed4449d23aea284dc4de6c3818eea5c7e149ddda6f7c9"),
 	SIX("http://textures.minecraft.net/texture/7fb91bb97749d6a6eed4449d23aea284dc4de6c3818eea5c7e149ddda6f7c9"),
-	SEVEN("http://textures.minecraft.net/texture/9e198fd831cb61f3927f21cf8a7463af5ea3c7e43bd3e8ec7d2948631cce879");
+	SEVEN("http://textures.minecraft.net/texture/9e198fd831cb61f3927f21cf8a7463af5ea3c7e43bd3e8ec7d2948631cce879"),
+	
+	ONE_GOLD("http://textures.minecraft.net/texture/d55fc2c1bae8e08d3e426c17c455d2ff9342286dffa3c7c23f4bd365e0c3fe"),
+	TWO_GOLD("http://textures.minecraft.net/texture/dc61b04e12a879767b3b72d69627f29a83bdeb6220f5dc7bea2eb2529d5b097"),
+	THREE_GOLD("http://textures.minecraft.net/texture/6823f77558ca6060b6dc6a4d4b1d86c1a5bee7081677bbc336ccb92fbd3ee"),
+	FOUR_GOLD("http://textures.minecraft.net/texture/91b9c4d6f7208b1424f8595bfc1b85ccaaee2c5b9b41e0f564d4e0aca959"),
+	FIVE_GOLD("http://textures.minecraft.net/texture/bc1415973b42f8286f948e2140992b9a29d80965593b14553d644f4feafb7"),
+	SIX_GOLD("http://textures.minecraft.net/texture/16f5fbfbc8944a50777113798e9fe3aeac2e39648947b70cc103deb6c9e8661");
 
 	private final String value;
 

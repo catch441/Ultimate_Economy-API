@@ -7,6 +7,20 @@ import org.bukkit.entity.EntityType;
 public interface Job {
 
 	/**
+	 * Setup a new job.
+	 * 
+	 * @param name
+	 */
+	public void setupNew(String name);
+
+	/**
+	 * Setup an existing shop.
+	 * 
+	 * @param name
+	 */
+	public void setupExisting(String name);
+
+	/**
 	 * Returns the breedable entity list of the job.
 	 * 
 	 * @return breedableList

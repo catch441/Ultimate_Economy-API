@@ -12,6 +12,30 @@ import org.ue.economyvillager.logic.api.EconomyVillager;
 public interface Town extends EconomyVillager<TownsystemException> {
 
 	/**
+	 * Setup a new town.
+	 * 
+	 * @param townworld
+	 * @param mayor
+	 * @param townName
+	 * @param location
+	 * @throws EconomyPlayerException
+	 */
+	public void setupNew(Townworld townworld, EconomyPlayer mayor, String townName, Location location)
+			throws EconomyPlayerException;
+
+	/**
+	 * Setup an existing town.
+	 * 
+	 * @param townworld
+	 * @param townName
+	 * @throws TownsystemException
+	 * @throws BankException
+	 * @throws EconomyPlayerException
+	 */
+	public void setupExisting(Townworld townworld, String townName)
+			throws TownsystemException, BankException, EconomyPlayerException;
+
+	/**
 	 * Removes a chunk from a town.
 	 * 
 	 * @param plot
@@ -66,12 +90,13 @@ public interface Town extends EconomyVillager<TownsystemException> {
 	 * @throws BankException
 	 */
 	public void increaseTownBankAmount(double amount) throws BankException;
-	
+
 	/**
 	 * Change the location of the townmanager with permission check.
+	 * 
 	 * @param location
 	 * @param player
-	 * @throws TownsystemException 
+	 * @throws TownsystemException
 	 */
 	public void changeLocation(Location location, EconomyPlayer player) throws TownsystemException;
 
@@ -80,7 +105,7 @@ public interface Town extends EconomyVillager<TownsystemException> {
 	 * 
 	 * @param player the player has to be a citizen of the town
 	 * @throws TownsystemException
-	 * @throws EconomyPlayerException 
+	 * @throws EconomyPlayerException
 	 */
 	public void addDeputy(EconomyPlayer player) throws TownsystemException, EconomyPlayerException;
 
@@ -167,8 +192,8 @@ public interface Town extends EconomyVillager<TownsystemException> {
 	 * 
 	 * @param chunk
 	 * @param player the player who want to use this method
-	 * @throws TownsystemException 
-	 * @throws BankException 
+	 * @throws TownsystemException
+	 * @throws BankException
 	 */
 	public void expandTown(Chunk chunk, EconomyPlayer player) throws TownsystemException, BankException;
 
@@ -177,8 +202,8 @@ public interface Town extends EconomyVillager<TownsystemException> {
 	 * 
 	 * @param newName
 	 * @param player  the player who want to use this method
-	 * @throws TownsystemException 
-	 * @throws EconomyPlayerException 
+	 * @throws TownsystemException
+	 * @throws EconomyPlayerException
 	 */
 	public void renameTown(String newName, EconomyPlayer player) throws TownsystemException, EconomyPlayerException;
 
@@ -211,11 +236,10 @@ public interface Town extends EconomyVillager<TownsystemException> {
 	 * 
 	 * @param player the player who wants to by the plot, have to be a citizen of
 	 *               the town
-	 * @param chunkX
-	 * @param chunkZ
+	 * @param plot
 	 * @throws TownsystemException
 	 */
-	public void buyPlot(EconomyPlayer player, int chunkX, int chunkZ) throws TownsystemException;
+	public void buyPlot(EconomyPlayer player, Plot plot) throws TownsystemException;
 
 	/**
 	 * Returns a Plot by chunk coords.

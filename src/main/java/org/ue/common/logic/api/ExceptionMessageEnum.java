@@ -27,7 +27,7 @@ public enum ExceptionMessageEnum {
 	INVALID_CHAR_IN_SHOP_NAME("invalid_char_in_shop_name"), INVALID_PRICES("invalid_prices"),
 	ITEM_DOES_NOT_EXIST("item_does_not_exist_in_shop"), ITEM_CANNOT_BE_DELETED("item_cannot_be_deleted"),
 	ITEM_UNAVAILABLE("item_unavailable"), ERROR_ON_RENAMING("error_on_rename"), ALREADY_RENTED("already_rented"),
-	NOT_RENTED("not_rented"), SHOPOWNER_NOT_ENOUGH_MONEY("shopowner_not_enough_money");
+	NOT_RENTED("not_rented"), SHOPOWNER_NOT_ENOUGH_MONEY("shopowner_not_enough_money"), DEV_TEST("nothing");
 
 	private String value;
 

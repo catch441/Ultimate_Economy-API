@@ -2,7 +2,7 @@ package org.ue.common.logic.api;
 
 import java.util.List;
 
-public interface GeneralValidator<T extends GeneralEconomyException> {
+public abstract interface GeneralValidator<T extends GeneralEconomyException> {
 
 	/**
 	 * Check if a given string value is valid for a given enum value list.
