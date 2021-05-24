@@ -13,12 +13,21 @@ public abstract interface InventoryGuiHandler {
 	 * @param player
 	 */
 	public void openInventory(Player player);
-	
+
 	/**
-	 * Returns the inventory. E.x. to add it as backlink to a other inventory GUI handler.
+	 * Returns the inventory. E.x. to add it as backlink to a other inventory GUI
+	 * handler.
+	 * 
 	 * @return inventory
 	 */
 	public Inventory getInventory();
+
+	/**
+	 * Set a new backlink inventory.
+	 * 
+	 * @param backLink
+	 */
+	public void updateBackLink(Inventory backLink);
 
 	/**
 	 * Handles a inventory GUI click.

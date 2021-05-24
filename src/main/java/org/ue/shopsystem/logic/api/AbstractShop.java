@@ -137,8 +137,8 @@ public abstract interface AbstractShop extends EconomyVillager<ShopsystemExcepti
 	/**
 	 * Returns the slot editor GUI handler setup for a given slot.
 	 * 
-	 * @return slot
+	 * @return slot null, if the correct selected slot is already selected
 	 * @throws ShopsystemException
 	 */
-	public InventoryGuiHandler getSlotEditorHandler(int slot) throws ShopsystemException;
+	public InventoryGuiHandler getSlotEditorHandler(Integer slot) throws ShopsystemException;
 }
