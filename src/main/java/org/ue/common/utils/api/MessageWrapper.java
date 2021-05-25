@@ -2,6 +2,9 @@ package org.ue.common.utils.api;
 
 import java.util.Locale;
 
+import org.ue.common.logic.api.ExceptionMessageEnum;
+import org.ue.common.logic.api.MessageEnum;
+
 public interface MessageWrapper {
 
 	/**
@@ -22,7 +25,7 @@ public interface MessageWrapper {
 	 * @param key
 	 * @return message
 	 */
-	public String getErrorString(String key);
+	public String getErrorString(ExceptionMessageEnum key);
 	
 	/**
 	 * Returns a error message with the chatcolor red.
@@ -31,7 +34,7 @@ public interface MessageWrapper {
 	 * @param params
 	 * @return message
 	 */
-	public String getErrorString(String key, Object... params);
+	public String getErrorString(ExceptionMessageEnum key, Object... params);
 	
 	/**
 	 * Returns a message with chatcolor gold.
@@ -39,7 +42,7 @@ public interface MessageWrapper {
 	 * @param key
 	 * @return messgage
 	 */
-	public String getString(String key);
+	public String getString(MessageEnum key);
 	
 	/**
 	 * Returns a message with chatcolor gold and green.
@@ -48,5 +51,5 @@ public interface MessageWrapper {
 	 * @param params
 	 * @return message
 	 */
-	public String getString(String key, Object... params);
+	public String getString(MessageEnum key, Object... params);
 }

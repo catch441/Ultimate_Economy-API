@@ -6,10 +6,10 @@ import java.util.Map;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.ue.bank.logic.api.BankAccount;
-import org.ue.common.logic.api.EconomyVillagerValidationHandler;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyvillager.logic.api.EconomyVillagerValidator;
 
-public interface TownsystemValidationHandler extends EconomyVillagerValidationHandler<TownsystemException> {
+public interface TownsystemValidator extends EconomyVillagerValidator<TownsystemException> {
 
 	/**
 	 * Check for world exists on server.

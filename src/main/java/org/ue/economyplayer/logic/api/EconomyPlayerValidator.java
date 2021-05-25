@@ -3,10 +3,10 @@ package org.ue.economyplayer.logic.api;
 import java.util.List;
 
 import org.ue.bank.logic.api.BankAccount;
-import org.ue.common.logic.api.GeneralValidationHandler;
+import org.ue.common.logic.api.GeneralValidator;
 import org.ue.jobsystem.logic.api.Job;
 
-public interface EconomyPlayerValidationHandler extends GeneralValidationHandler<EconomyPlayerException> {
+public interface EconomyPlayerValidator extends GeneralValidator<EconomyPlayerException> {
 
 	/**
 	 * Check for has enough money.

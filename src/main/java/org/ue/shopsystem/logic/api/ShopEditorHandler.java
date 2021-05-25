@@ -1,37 +1,16 @@
 package org.ue.shopsystem.logic.api;
 
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
+import org.ue.common.logic.api.InventoryGuiHandler;
 
-public interface ShopEditorHandler {
+public interface ShopEditorHandler extends InventoryGuiHandler {
 
 	/**
 	 * Setup a new editor inventory.
 	 * 
+	 * @param shop
 	 * @param reservedSlots
 	 */
-	public void setup(int reservedSlots);
-	
-	/**
-	 * Handles a click in the shop inventory.
-	 * 
-	 * @param event
-	 */
-	public void handleInventoryClick(InventoryClickEvent event);
-	
-	/**
-	 * Returns the editor inventory.
-	 * 
-	 * @return editor inventory
-	 */
-	public Inventory getEditorInventory();
-	
-	/**
-	 * Changes the name of the editor inventory.
-	 * 
-	 * @param newName
-	 */
-	public void changeInventoryName(String newName);
+	public void setup(AbstractShop shop, int reservedSlots);
 	
 	/**
 	 * Set a slot as occupied or free.

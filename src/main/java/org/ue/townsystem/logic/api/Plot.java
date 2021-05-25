@@ -3,10 +3,30 @@ package org.ue.townsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.common.logic.api.EconomyVillager;
+import org.bukkit.entity.Player;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
+import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 
 public interface Plot extends EconomyVillager<TownsystemException> {
+
+	/**
+	 * Setup a new plot.
+	 * 
+	 * @param owner
+	 * @param town
+	 * @param chunkCoords
+	 */
+	public void setupNew(EconomyPlayer owner, Town town, String chunkCoords);
+
+	/**
+	 * Setup an existing plot.
+	 * 
+	 * @param town
+	 * @param chunkCoords
+	 * @throws EconomyPlayerException
+	 */
+	public void setupExisting(Town town, String chunkCoords) throws EconomyPlayerException;
 
 	/**
 	 * Sets this plot for sale with saving it in the file. Spawns a SellVillager at
@@ -107,4 +127,12 @@ public interface Plot extends EconomyVillager<TownsystemException> {
 	 * @return town
 	 */
 	public Town getTown();
+
+	/**
+	 * Opens the plot sale GUI.
+	 * 
+	 * @param player
+	 * @throws TownsystemException if plot is for sale
+	 */
+	public void openInventoryWithCheck(Player player) throws TownsystemException;
 }

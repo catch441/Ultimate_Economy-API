@@ -5,10 +5,8 @@ public enum AdminshopCommandEnum {
 	CREATE,
 	DELETE,
 	RENAME,
-	RESIZE,
 	MOVE,
 	EDITSHOP,
-	CHANGEPROFESSION,
 	ADDSPAWNER,
 	UNKNOWN;
 

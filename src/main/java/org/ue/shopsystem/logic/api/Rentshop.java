@@ -3,6 +3,7 @@ package org.ue.shopsystem.logic.api;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.ue.bank.logic.api.BankException;
+import org.ue.common.logic.api.InventoryGuiHandler;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
@@ -35,7 +36,8 @@ public interface Rentshop extends Playershop {
 	/**
 	 * Resets the entire shop. Sets the shop back to the "rentable" state. Removes
 	 * all items from the shop.
-	 * @throws ShopsystemException 
+	 * 
+	 * @throws ShopsystemException
 	 * 
 	 */
 	public void resetShop() throws ShopsystemException;
@@ -61,17 +63,25 @@ public interface Rentshop extends Playershop {
 			throws ShopsystemException, BankException, EconomyPlayerException;
 
 	/**
-	 * Opens the rentshop GUI, if the shop is not rented.
-	 * 
-	 * @param player
-	 * @throws ShopsystemException
-	 */
-	public void openRentGUI(Player player) throws ShopsystemException;
-
-	/**
 	 * Returns the rental fee amount.
 	 * 
 	 * @return rentalFee
 	 */
 	public double getRentalFee();
+
+	/**
+	 * Returns the rent inventory GUI handler.
+	 * 
+	 * @return InventoryGuiHandler
+	 * @throws ShopsystemException if not rented
+	 */
+	public InventoryGuiHandler getRentGuiHandler() throws ShopsystemException;
+
+	/**
+	 * Opens the rentshop GUI with check.
+	 * 
+	 * @param player
+	 * @throws ShopsystemException if not rented
+	 */
+	public void openInventoryWithCheck(Player player) throws ShopsystemException;
 }

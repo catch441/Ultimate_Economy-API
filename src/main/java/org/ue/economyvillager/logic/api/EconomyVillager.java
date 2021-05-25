@@ -1,12 +1,14 @@
-package org.ue.common.logic.api;
+package org.ue.economyvillager.logic.api;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager.Profession;
+import org.bukkit.entity.Villager.Type;
 import org.bukkit.inventory.Inventory;
+import org.ue.common.logic.api.GeneralEconomyException;
+import org.ue.common.logic.api.InventoryGuiHandler;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
 
-public interface EconomyVillager<T extends GeneralEconomyException> {
+public abstract interface EconomyVillager<T extends GeneralEconomyException> extends InventoryGuiHandler {
 
 	/**
 	 * Change the profession of the villager.
@@ -14,6 +16,13 @@ public interface EconomyVillager<T extends GeneralEconomyException> {
 	 * @param professtion
 	 */
 	public void changeProfession(Profession professtion);
+
+	/**
+	 * Change the biome type of the villager.
+	 * 
+	 * @param biomeType
+	 */
+	public void changeBiomeType(Type biomeType);
 
 	/**
 	 * Change the location of the villager.
@@ -30,6 +39,13 @@ public interface EconomyVillager<T extends GeneralEconomyException> {
 	 * @throws EconomyPlayerException
 	 */
 	public Location getLocation();
+
+	/**
+	 * Returns the id of the economy villager.
+	 * 
+	 * @return id
+	 */
+	public String getId();
 
 	/**
 	 * Returns the size of the inventory.
@@ -52,12 +68,11 @@ public interface EconomyVillager<T extends GeneralEconomyException> {
 	public void changeSize(int newSize) throws T;
 
 	/**
-	 * Opens the inventory for the given player.
+	 * Returns the villager customize GUI hander.
 	 * 
-	 * @param player
-	 * @throws T
+	 * @return InventoryGuiHandler
 	 */
-	public void openInventory(Player player) throws T;
+	public InventoryGuiHandler getCustomizeGuiHandler();
 
 	/**
 	 * Creates a inventory with the villager as owning entity.

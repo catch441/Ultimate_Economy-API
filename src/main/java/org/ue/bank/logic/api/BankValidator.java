@@ -1,8 +1,8 @@
 package org.ue.bank.logic.api;
 
-import org.ue.common.logic.api.GeneralValidationHandler;
+import org.ue.common.logic.api.GeneralValidator;
 
-public interface BankValidationHandler extends GeneralValidationHandler<BankException> {
+public interface BankValidator extends GeneralValidator<BankException> {
 
 	/**
 	 * Checks for bank account has enough money to reduce.

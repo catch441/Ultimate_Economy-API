@@ -3,7 +3,7 @@ package org.ue.jobsystem.logic.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.common.logic.api.EconomyVillager;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 
 public interface Jobcenter extends EconomyVillager<JobsystemException> {
 

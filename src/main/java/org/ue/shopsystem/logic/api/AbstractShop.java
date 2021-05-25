@@ -2,12 +2,12 @@ package org.ue.shopsystem.logic.api;
 
 import java.util.List;
 
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.economyvillager.logic.api.EconomyVillager;
 import org.ue.bank.logic.api.BankException;
-import org.ue.common.logic.api.EconomyVillager;
+import org.ue.common.logic.api.InventoryGuiHandler;
 
 public abstract interface AbstractShop extends EconomyVillager<ShopsystemException> {
 
@@ -26,13 +26,6 @@ public abstract interface AbstractShop extends EconomyVillager<ShopsystemExcepti
 	 * @return name
 	 */
 	public String getName();
-
-	/**
-	 * Returns the shopId.
-	 * 
-	 * @return shopId
-	 */
-	public String getShopId();
 
 	/**
 	 * Returns the itemslist of this shop.
@@ -137,21 +130,15 @@ public abstract interface AbstractShop extends EconomyVillager<ShopsystemExcepti
 	public void deleteShop();
 
 	/**
-	 * Opens the slot editor GUI.
-	 * 
-	 * @param player
-	 * @param slot   internal
-	 * @throws ShopsystemException
+	 * Returns the editor GUI handler.
 	 */
-	public void openSlotEditor(Player player, int slot) throws ShopsystemException;
+	public InventoryGuiHandler getEditorHandler();
 
 	/**
-	 * Opens the editor GUI with occupied and free slots The 2 last slots are not
-	 * used. If you need more then 2 slots for other usage, then override this
-	 * method.
+	 * Returns the slot editor GUI handler setup for a given slot.
 	 * 
-	 * @param player
-	 * @throws ShopsystemException rentshop: if the shop is not rented
+	 * @return slot null, if the correct selected slot is already selected
+	 * @throws ShopsystemException
 	 */
-	public void openEditor(Player player) throws ShopsystemException;
+	public InventoryGuiHandler getSlotEditorHandler(Integer slot) throws ShopsystemException;
 }

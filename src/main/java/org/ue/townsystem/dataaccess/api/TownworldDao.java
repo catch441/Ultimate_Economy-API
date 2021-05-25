@@ -3,9 +3,9 @@ package org.ue.townsystem.dataaccess.api;
 import java.util.List;
 
 import org.bukkit.Location;
-import org.ue.common.dataaccess.api.EconomyVillagerDao;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
 import org.ue.economyplayer.logic.api.EconomyPlayerException;
+import org.ue.economyvillager.dataaccess.api.EconomyVillagerDao;
 import org.ue.townsystem.logic.api.TownsystemException;
 
 public interface TownworldDao extends EconomyVillagerDao {

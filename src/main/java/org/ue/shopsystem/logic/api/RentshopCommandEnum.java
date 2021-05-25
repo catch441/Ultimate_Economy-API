@@ -5,8 +5,6 @@ public enum RentshopCommandEnum {
 	CREATE,
 	DELETE,
 	MOVE,
-	RESIZE,
-	CHANGEPROFESSION,
 	RENAME,
 	EDITSHOP,
 	UNKNOWN;

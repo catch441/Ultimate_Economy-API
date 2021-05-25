@@ -11,6 +11,20 @@ import org.ue.economyplayer.logic.api.EconomyPlayerException;
 public interface Townworld {
 
 	/**
+	 * Setup a new townworld.
+	 * 
+	 * @param worldName
+	 */
+	public void setupNew(String worldName);
+
+	/**
+	 * Setup an existing townworld.
+	 * 
+	 * @param worldName
+	 */
+	public void setupExisting(String worldName);
+
+	/**
 	 * Returns the townlist.
 	 * 
 	 * @return List
@@ -82,7 +96,7 @@ public interface Townworld {
 	public void setFoundationPrice(double foundationPrice) throws TownsystemException;
 
 	/**
-	 * Returns the founding price of this townworld.
+	 * Retu@Override rns the founding price of this townworld.
 	 * 
 	 * @return double
 	 */

@@ -6,9 +6,9 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 import org.ue.economyplayer.logic.api.EconomyPlayer;
-import org.ue.common.logic.api.EconomyVillagerValidationHandler;
+import org.ue.economyvillager.logic.api.EconomyVillagerValidator;
 
-public interface ShopValidationHandler extends EconomyVillagerValidationHandler<ShopsystemException> {
+public interface ShopValidator extends EconomyVillagerValidator<ShopsystemException> {
 
 	/**
 	 * Check for both prices greater then zero.
